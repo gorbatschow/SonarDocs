@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chen & Millero equation (UNESCO) - SONAR.m/docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <link rel="stylesheet" href="../css/theme_extra_custom.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chen \u0026 Millero equation (UNESCO)";
+        var mkdocs_page_input_path = "sound_speed_sea_unesco.en.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="../js/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // auto-render specific keys
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+                {left: "\\begin{align}", right: "\\end{align}", display: true},
+                {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+                {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+              ],
+              ignoredTags: [
+                "script", "noscript", "style", "textarea", "pre", "code"
+              ],
+              // rendering keys
+              displayMode : true,
+              output : "htmlAndMathml", // html mathml htmlAndMathml
+              leqno : false,
+              fleqn : true,
+              throwOnError : false,
+              errorColor : "#cc0000",
+              minRuleThickness : 0.04,
+              colorIsTextColor : true,
+              maxSize : Infinity,
+              maxExpand : 1000,
+              strict : "warn",
+              trust : true,
+              //macros : {"\\f":"#1f(#2)"}
+            });
+        });
+    </script> 
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SONAR.m/docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search"
+      title="Type and press ENTER" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
+        <!-- INDEX -->
+          <ul class="">
+              <li class="toctree-l0">
+                <a class="reference internal" href="..">Index</a>
+              </li>
+          </ul>
+        
+        <!-- SECTION -->
+            <ul class="current">
+              <li class="toctree-l1 current"><a class="reference internal current" 
+href="#">Sound speed in sea</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_coppens.en/">Coppens equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_mackenzie.en/">Mackenzie equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_delgrosso.en/">Del Grosso equation</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" 
+href="./">Chen & Millero equation (UNESCO)</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#mathematical-definition">Mathematical definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#octavematlab-implementation">Octave/Matlab implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#computational-examples">Computational examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_npl.en/">Leroy et al. equation (NPL)</a>
+                </li>
+    </ul>
+              </li>
+            </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SONAR.m/docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                  <h1 id="sound-speed-in-sea-unesco-equation">Sound speed in sea. UNESCO equation</h1>
+<h2 id="mathematical-definition">Mathematical definition</h2>
+<p>$$\boxed{C\left( {T,S,P} \right) = {C_W}\left( {T,P} \right) + A\left( {T,P} \right)S + B\left( {T,P} \right){S^{\frac{3}{2}}} + D\left( {T,P} \right){S^2}}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Conversion</th>
+<th>Units</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C$</td>
+<td>sound speed</td>
+<td></td>
+<td>$m/s$</td>
+<td></td>
+</tr>
+<tr>
+<td>$T$</td>
+<td>temperature</td>
+<td></td>
+<td>$^{\circ}C$</td>
+<td>$0 &lt; T &lt; 40$</td>
+</tr>
+<tr>
+<td>$S$</td>
+<td>salinity</td>
+<td></td>
+<td>$‰$</td>
+<td>$5 &lt; S &lt; 40$</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>pressure</td>
+<td>$\times 10^{-2}$</td>
+<td>$kPa$</td>
+<td>$0 &lt; P &lt; 100000$</td>
+</tr>
+</tbody>
+</table>
+<p>$$\begin{array}{l}
+{C_W}\left( {T,P} \right) = \left( {{C_{00}} + {C_{01}}T + {C_{02}}{T^2} + {C_{03}}{T^3} + {C_{04}}{T^4} + {C_{05}}{T^5}} \right)\\
+ + \left( {{C_{10}} + {C_{11}}T + {C_{12}}{T^2} + {C_{13}}{T^3} + {C_{14}}{T^4}} \right)P\\
+ + \left( {{C_{20}} + {C_{21}}T + {C_{22}}{T^2} + {C_{23}}{T^3} + {C_{24}}{T^4}} \right){P^2}\\
+ + \left( {{C_{30}} + {C_{31}}T + {C_{32}}{T^2}} \right){P^3}
+\end{array}$$</p>
+<p>$$\begin{array}{l}
+A\left( {T,P} \right) = \left( {{A_{00}} + {A_{01}}T + {A_{02}}{T^2} + {A_{03}}{T^3} + {A_{04}}{T^4}} \right)\\
+ + \left( {{A_{10}} + {A_{11}}T + {A_{12}}{T^2} + {A_{13}}{T^3} + {A_{14}}{T^4}} \right)P\\
+ + \left( {{A_{20}} + {A_{21}}T + {A_{22}}{T^2} + {A_{23}}{T^3}} \right){P^2}\\
+ + \left( {{A_{31}} + {A_{31}}T + {A_{32}}{T^2}} \right){P^3}
+\end{array}$$</p>
+<p>$$B\left( {T,P} \right) = {B_{00}} + {B_{01}}T + \left( {{B_{10}} + {B_{11}}T} \right)P$$</p>
+<p>$$D\left( {T,P} \right) = {D_{00}} + {D_{10}}P$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Value</th>
+<th>Coefficient</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C_{00}$</td>
+<td>$1402.388$</td>
+<td>$A_{02}$</td>
+<td>$7.166\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{01}$</td>
+<td>$5.03830$</td>
+<td>$A_{03}$</td>
+<td>$2.008\times10^{-6}$</td>
+</tr>
+<tr>
+<td>$C_{02}$</td>
+<td>$-5.81090\times10^{-2}$</td>
+<td>$A_{04}$</td>
+<td>$-3.21\times10^{-8}$</td>
+</tr>
+<tr>
+<td>$C_{03}$</td>
+<td>$3.3432\times10^{-4}$</td>
+<td>$A_{10}$</td>
+<td>$9.4742\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{04}$</td>
+<td>$-1.47797\times10^{-6}$</td>
+<td>$A_{11}$</td>
+<td>$-1.2583\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{05}$</td>
+<td>$3.1419\times10^{-9}$</td>
+<td>$A_{12}$</td>
+<td>$-6.4928\times10^{-8}$</td>
+</tr>
+<tr>
+<td>$C_{10}$</td>
+<td>$0.153563$</td>
+<td>$A_{13}$</td>
+<td>$1.0515\times10^{-8}$</td>
+</tr>
+<tr>
+<td>$C_{11}$</td>
+<td>$6.8999\times10^{-4}$</td>
+<td>$A_{14}$</td>
+<td>$-2.0142\times10^{-10}$</td>
+</tr>
+<tr>
+<td>$C_{12}$</td>
+<td>$-8.1829\times10^{-6}$</td>
+<td>$A_{20}$</td>
+<td>$-3.9064\times10^{-7}$</td>
+</tr>
+<tr>
+<td>$C_{13}$</td>
+<td>$1.3632\times10^{-7}$</td>
+<td>$A_{21}$</td>
+<td>$9.1061\times10^{-9}$</td>
+</tr>
+<tr>
+<td>$C_{14}$</td>
+<td>$-6.1260\times10^{-10}$</td>
+<td>$A_{22}$</td>
+<td>$-1.6009\times10^{-10}$</td>
+</tr>
+<tr>
+<td>$C_{20}$</td>
+<td>$3.1260\times10^{-5}$</td>
+<td>$A_{23}$</td>
+<td>$7.994\times10^{-12}$</td>
+</tr>
+<tr>
+<td>$C_{21}$</td>
+<td>$-1.7111\times10^{-6}$</td>
+<td>$A_{30}$</td>
+<td>$1.100\times10^{-10}$</td>
+</tr>
+<tr>
+<td>$C_{22}$</td>
+<td>$2.5986\times10^{-8}$</td>
+<td>$A_{31}$</td>
+<td>$6.651\times10^{-12}$</td>
+</tr>
+<tr>
+<td>$C_{23}$</td>
+<td>$-2.5353\times10^{-10}$</td>
+<td>$A_{32}$</td>
+<td>$-3.391\times10^{-13}$</td>
+</tr>
+<tr>
+<td>$C_{24}$</td>
+<td>$1.0415\times10^{-12}$</td>
+<td>$B_{00}$</td>
+<td>$-1.922\times10^{-2}$</td>
+</tr>
+<tr>
+<td>$C_{30}$</td>
+<td>$-9.7729\times10^{-9}$</td>
+<td>$B_{01}$</td>
+<td>$-4.42\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{31}$</td>
+<td>$3.8513\times10^{-10}$</td>
+<td>$B_{10}$</td>
+<td>$7.3637\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{32}$</td>
+<td>$-2.3654\times10^{-12}$</td>
+<td>$B_{11}$</td>
+<td>$1.7950\times10^{-7}$</td>
+</tr>
+<tr>
+<td>$A_{00}$</td>
+<td>$1.389$</td>
+<td>$D_{00}$</td>
+<td>$1.727\times10^{-3}$</td>
+</tr>
+<tr>
+<td>$A_{01}$</td>
+<td>$1.262\times10^{-2}$</td>
+<td>$D_{10}$</td>
+<td>$-7.9836\times10^{-6}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
+<pre><code>function C = sound_speed_sea_unesco(T,S,P)
+% Arguments
+%   T: temperature \ degree Celsius \ 0 &lt; T &lt; 40 
+%   S: salinity \ ppt \ 5 &lt; S &lt; 40
+%   P: pressure \ kPa \ 0 &lt; P &lt; 100000 
+% Results
+%   C: speed of sound in seawater \ m/s
+
+    C00=1402.388; C01=5.03830; C02=-5.81090e-2; C03=3.3432e-4; 
+    C04=-1.47797e-6; C05=3.1419e-9;
+    C10=0.153563; C11=6.8999e-4; C12=-8.1829e-6; C13=1.3632e-7;
+    C14=-6.1260e-10; C20=3.1260e-5; C21=-1.7111e-6; 
+    C22=2.5986e-8; C23=-2.5353e-10; C24=1.0415e-12; C30=-9.7729e-9;
+    C31=3.8513e-10; C32=-2.3654e-12;
+    A00=1.389; A01=-1.262e-2; A02=7.166e-5; A03=2.008e-6;
+    A04=-3.21e-8;
+    A10=9.4742e-5; A11=-1.2583e-5; A12=-6.4928e-8; A13=1.0515e-8;
+    A14=-2.0142e-10;
+    A20=-3.9064e-7; A21=9.1061e-9; A22=-1.6009e-10; A23=7.994e-12;
+    A30=1.100e-10; A31=6.651e-12; A32=-3.391e-13;
+    B00=-1.922e-2; B01=-4.42e-5; B10=7.3637e-5; B11=1.7950e-7;
+    D00=1.727e-3;
+    D10=-7.9836e-6;
+
+    p = P*1e-2;
+
+    Cw = (C00 + C01*T + C02*(T.^2) + C03*(T.^3) + C04*(T.^4) + C05*(T.^5)) ...
+        + (C10 + C11*T + C12*(T.^2) + C13*(T.^3) + C14*(T.^4)).*p ...
+        + (C20 + C21*T + C22*(T.^2) + C23*(T.^3) + C24*(T.^4)).*(p.^2) ...
+        + (C30 + C31*T + C32*(T.^2)).*(p.^3);
+
+    A = (A00 + A01*T + A02*(T.^2) + A03*(T.^3) + A04*(T.^4)) ...
+        + (A10 + A11*T + A12*(T.^2) + A13*(T.^3) + A14*(T.^4)).*p ...
+        + (A20 + A21*T + A22*(T.^2) + A23*(T.^3)).*(p.^2) ...
+        + (A30 + A31*T + A32*(T.^2)).*(p.^3);
+
+    B = B00 + B01*T + (B10 + B11*T).*p;
+
+    D = D00+(D10.*p);
+
+    C = Cw + A.*S + B.*(S.^(3/2)) + D.*(S.^2);
+end
+</code></pre>
+<h2 id="computational-examples">Computational examples</h2>
+<p><img alt="" src="../img/sound_speed_sea_unesco.en-1.png" /></p>
+<table>
+<thead>
+<tr>
+<th>$D$\$T$</th>
+<th>$0°\text{C}$</th>
+<th>$10°\text{C}$</th>
+<th>$20°\text{C}$</th>
+<th>$30°\text{C}$</th>
+<th>$40°\text{C}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$10\ m$</td>
+<td>$1442.62$</td>
+<td>$1483.92$</td>
+<td>$1516.06$</td>
+<td>$1540.59$</td>
+<td>$1558.51$</td>
+</tr>
+<tr>
+<td>$1000\ m$</td>
+<td>$1458.91$</td>
+<td>$1500.37$</td>
+<td>$1532.69$</td>
+<td>$1557.44$</td>
+<td>$1575.52$</td>
+</tr>
+<tr>
+<td>$2000\ m$</td>
+<td>$1475.80$</td>
+<td>$1517.20$</td>
+<td>$1549.55$</td>
+<td>$1574.45$</td>
+<td>$1592.71$</td>
+</tr>
+<tr>
+<td>$5000\ m$</td>
+<td>$1528.73$</td>
+<td>$1568.88$</td>
+<td>$1600.53$</td>
+<td>$1625.45$</td>
+<td>$1644.16$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ol>
+<li>Chen, Chen‐Tung; Millero, Frank J, "Speed of sound in seawater at high pressures", 1977</li>
+<li>Millero, FJ; Li, X, "On equations for the speed of sound in seawater-comment", 1994</li>
+</ol>
+              
+            </div>
+          </div><footer>
+  <hr/>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Made with MkDocs using ReadTheDocsTheme</p>
+    <!-- Technical Info
+    MkDocs version : 1.4.2
+    Build Date UTC : 2022-12-19 21:50:02.083912+00:00
+     -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../sound_speed_sea_delgrosso.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sound_speed_sea_npl.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        };
+    </script>
+
+</body>
+</html>

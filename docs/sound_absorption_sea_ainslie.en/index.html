@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Ainslie & McColm equation - SONAR.m/docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <link rel="stylesheet" href="../css/theme_extra_custom.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ainslie \u0026 McColm equation";
+        var mkdocs_page_input_path = "sound_absorption_sea_ainslie.en.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="../js/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // auto-render specific keys
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+                {left: "\\begin{align}", right: "\\end{align}", display: true},
+                {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+                {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+              ],
+              ignoredTags: [
+                "script", "noscript", "style", "textarea", "pre", "code"
+              ],
+              // rendering keys
+              displayMode : true,
+              output : "htmlAndMathml", // html mathml htmlAndMathml
+              leqno : false,
+              fleqn : true,
+              throwOnError : false,
+              errorColor : "#cc0000",
+              minRuleThickness : 0.04,
+              colorIsTextColor : true,
+              maxSize : Infinity,
+              maxExpand : 1000,
+              strict : "warn",
+              trust : true,
+              //macros : {"\\f":"#1f(#2)"}
+            });
+        });
+    </script> 
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SONAR.m/docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search"
+      title="Type and press ENTER" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
+        <!-- INDEX -->
+          <ul class="">
+              <li class="toctree-l0">
+                <a class="reference internal" href="..">Index</a>
+              </li>
+          </ul>
+        
+        <!-- SECTION -->
+            <ul class="current">
+              <li class="toctree-l1 current"><a class="reference internal current" 
+href="#">Sound absorption in sea</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_absorption_sea_thorp.en/">Thorp equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_absorption_sea_francois.en/">Francois & Garrison equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_absorption_sea_fisher.en/">Fisher & Simmons equation</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" 
+href="./">Ainslie & McColm equation</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#mathematical-definition">Mathematical definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#octavematlab-implementation">Octave/Matlab implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#computational-examples">Computational examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+              </li>
+            </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SONAR.m/docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                  <h1 id="sound-absorption-in-sea-ainslie-mccolm-equation">Sound absorption in sea. Ainslie &amp; McColm equation</h1>
+<h2 id="mathematical-definition">Mathematical definition</h2>
+<p>$$\boxed{\alpha \left( {T,S,D,f,pH} \right)  = \frac{{{A_1}{P_1}{f_1}{f^2}}}{{{f_1}^2 + {f^2}}} + \frac{{{A_2}{P_2}{f_2}{f^2}}}{{{f_2}^2 + {f^2}}} + {A_3}{P_3}{f^2}}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Conversion</th>
+<th>Units</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td>absorption</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+<tr>
+<td>$T$</td>
+<td>temperature</td>
+<td></td>
+<td>$^{\circ}C$</td>
+<td>$-6 &lt; T &lt; 35$</td>
+</tr>
+<tr>
+<td>$S$</td>
+<td>salinity</td>
+<td></td>
+<td>$‰$</td>
+<td>$5 &lt; S &lt; 50$</td>
+</tr>
+<tr>
+<td>$D$</td>
+<td>depth</td>
+<td></td>
+<td>$m$</td>
+<td>$0 &lt; D &lt; 7000$</td>
+</tr>
+<tr>
+<td>$f$</td>
+<td>frequency</td>
+<td></td>
+<td>$kHz$</td>
+<td>$10^{-1} &lt;  f &lt; {10^3}$</td>
+</tr>
+<tr>
+<td>$pH$</td>
+<td>acidity</td>
+<td></td>
+<td></td>
+<td>$7.7 &lt; pH &lt; 8.3$</td>
+</tr>
+</tbody>
+</table>
+<p>$${A_1} = 0.106 \times \exp \left( {\left( {pH - 8} \right)/0.56} \right)$$</p>
+<p>$${P_1} = 1$$</p>
+<p>$${f_1} = 0.78\sqrt {S/35} \exp \left( {T/26} \right)$$</p>
+<p>$${A_2} = 0.52\left( {S/35} \right)\left( {1 + T/43} \right)$$</p>
+<p>$${P_2} = \exp \left( { - D/6} \right)$$</p>
+<p>$${f_2} = 42\exp \left( {T/17} \right)$$</p>
+<p>$${A_3} = 0.00049\exp \left( { - \left( {T/27 + D/17} \right)} \right)$$</p>
+<p>$${P_3} = 1$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Conversion</th>
+<th>Units</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$f_{1}$</td>
+<td>boric acid relaxation frequency</td>
+<td></td>
+<td>$kHz$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_{2}$</td>
+<td>magnesium sulphate relaxation frequency</td>
+<td></td>
+<td>$kHz$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\frac{{{A_1}{P_1}{f_1}{f^2}}}{{{f_1}^2 + {f^2}}}$</td>
+<td>boric acid contribution</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\frac{{{A_2}{P_2}{f_2}{f^2}}}{{{f_2}^2 + {f^2}}}$</td>
+<td>magnesium sulphate contribution</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+<tr>
+<td>${A_3}{P_3}{f^2}$</td>
+<td>pure water contribution</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
+<pre><code>function [alpha, Boric, MgSO4, H2O] = sound_absorption_sea_ainslie(T,S,D,f,pH)
+% Arguments
+%   T: temperature \ degree Celsius
+%   S: salinity \ ppt
+%   D: depth \ m
+%   f: frequency \ kHz
+%   pH: &quot;potential of hydrogen&quot;
+% Results
+%   alpha: absorption of sound in seawater \ dB/km
+
+    D = D*1e-3;
+
+    % Boric
+    A1 = 0.106*exp((pH-8)./0.56);
+    P1 = 1;
+    f1 = 0.78*sqrt(S./35).*exp(T./26);
+    Boric = (A1.*P1.*f1*(f.^2))./((f.^2)+(f1.^2));
+
+    % MgSO4
+    A2 = 0.52*(S./35).*(1+T./43);
+    P2 = exp(-D./6);
+    f2 = 42*exp(T./17);
+    MgSO4 = (A2.*P2.*f2*(f.^2))./((f.^2)+(f2.^2));
+
+    % H2O
+    A3 = 0.00049*exp(-(T./27+D./17));
+    P3 = 1;
+    H2O = A3.*P3.*(f.^2);
+
+    % Total
+    alpha = Boric + MgSO4 + H2O;
+end
+</code></pre>
+<h2 id="computational-examples">Computational examples</h2>
+<p><img alt="" src="../img/sound_absorption_sea_ainslie.en-1.png" /></p>
+<h2 id="references">References</h2>
+<ol>
+<li>Ainslie, Michael A; McColm, James G, "A simplified formula for viscous and chemical absorption in sea water", 1998</li>
+</ol>
+              
+            </div>
+          </div><footer>
+  <hr/>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Made with MkDocs using ReadTheDocsTheme</p>
+    <!-- Technical Info
+    MkDocs version : 1.4.2
+    Build Date UTC : 2022-12-19 21:50:02.074361+00:00
+     -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../sound_absorption_sea_fisher.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../depth_to_pressure_sea_leroy_68.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        };
+    </script>
+
+</body>
+</html>

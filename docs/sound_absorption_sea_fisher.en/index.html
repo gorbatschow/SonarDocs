@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Fisher & Simmons equation - SONAR.m/docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <link rel="stylesheet" href="../css/theme_extra_custom.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fisher \u0026 Simmons equation";
+        var mkdocs_page_input_path = "sound_absorption_sea_fisher.en.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="../js/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // auto-render specific keys
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+                {left: "\\begin{align}", right: "\\end{align}", display: true},
+                {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+                {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+              ],
+              ignoredTags: [
+                "script", "noscript", "style", "textarea", "pre", "code"
+              ],
+              // rendering keys
+              displayMode : true,
+              output : "htmlAndMathml", // html mathml htmlAndMathml
+              leqno : false,
+              fleqn : true,
+              throwOnError : false,
+              errorColor : "#cc0000",
+              minRuleThickness : 0.04,
+              colorIsTextColor : true,
+              maxSize : Infinity,
+              maxExpand : 1000,
+              strict : "warn",
+              trust : true,
+              //macros : {"\\f":"#1f(#2)"}
+            });
+        });
+    </script> 
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SONAR.m/docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search"
+      title="Type and press ENTER" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
+        <!-- INDEX -->
+          <ul class="">
+              <li class="toctree-l0">
+                <a class="reference internal" href="..">Index</a>
+              </li>
+          </ul>
+        
+        <!-- SECTION -->
+            <ul class="current">
+              <li class="toctree-l1 current"><a class="reference internal current" 
+href="#">Sound absorption in sea</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_absorption_sea_thorp.en/">Thorp equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_absorption_sea_francois.en/">Francois & Garrison equation</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" 
+href="./">Fisher & Simmons equation</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#mathematical-definition">Mathematical definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#octavematlab-implementation">Octave/Matlab implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#computational-examples">Computational examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
+                </li>
+    </ul>
+              </li>
+            </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SONAR.m/docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                  <h1 id="sound-absorption-in-sea-fisher-simmons-equation">Sound absorption in sea. Fisher &amp; Simmons equation</h1>
+<h2 id="mathematical-definition">Mathematical definition</h2>
+<p>$$\boxed{\alpha \left( {T,D,f} \right)  = \frac{{{A_1}{P_1}{f_1}{f^2}}}{{{f_1}^2 + {f^2}}} + \frac{{{A_2}{P_2}{f_2}{f^2}}}{{{f_2}^2 + {f^2}}} + {A_3}{P_3}{f^2}}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Converion</th>
+<th>Units</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td>absorption</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+<tr>
+<td>$T$</td>
+<td>temperature</td>
+<td></td>
+<td>$^{\circ}C$</td>
+<td></td>
+</tr>
+<tr>
+<td>$D$</td>
+<td>depth</td>
+<td></td>
+<td>$m$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f$</td>
+<td>frequency</td>
+<td></td>
+<td>$kHz$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>$${A_1} = \left( {1.03 \times {{10}^{ - 8}}} \right) + \left( {2.36 \times {{10}^{ - 10}}} \right)T - \left( {5.22 \times {{10}^{ - 12}}} \right){T^2}$$</p>
+<p>$${P_1} = 1$$</p>
+<p>$${f_1} = \left( {1.32 \times {{10}^3}} \right){T_K}\exp \left( { - 1700/{T_K}} \right)$$</p>
+<p>$${A_2} = \left( {5.62 \times {{10}^{ - 8}}} \right) + \left( {7.52 \times {{10}^{ - 10}}T} \right)$$</p>
+<p>$${P_2} = 1 - \left( {10.3 \times {{10}^{ - 4}}} \right)P + \left( {3.7 \times {{10}^{ - 7}}} \right){P^2}$$</p>
+<p>$${f_2} = \left( {1.55 \times {{10}^7}} \right){T_K}\exp \left( { - 3052/{T_K}} \right)$$</p>
+<p>$${A_3} = \left( {55.9 - 2.37T + \left( {4.77 \times {{10}^{ - 2}}} \right){T^2} - \left( {3.48 \times {{10}^{ - 4}}} \right){T^3}} \right) \times {10^{ - 15}}$$</p>
+<p>$${P_3} = 1 - \left( {3.84 \times {{10}^{ - 4}}} \right)P + \left( {7.57 \times {{10}^{ - 8}}} \right){P^2}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Conversion</th>
+<th>Units</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$T_{K}$</td>
+<td>temperature</td>
+<td>$=273.15+T$</td>
+<td>$K$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_{1}$</td>
+<td>boric acid relaxation frequency</td>
+<td></td>
+<td>$kHz$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_{2}$</td>
+<td>magnesium sulphate relaxation frequency</td>
+<td></td>
+<td>$kHz$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\frac{{{A_1}{P_1}{f_1}{f^2}}}{{{f_1}^2 + {f^2}}}$</td>
+<td>boric acid contribution</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\frac{{{A_2}{P_2}{f_2}{f^2}}}{{{f_2}^2 + {f^2}}}$</td>
+<td>magnesium sulphate contribution</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+<tr>
+<td>${A_3}{P_3}{f^2}$</td>
+<td>pure water contribution</td>
+<td></td>
+<td>$dB/km$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
+<pre><code>function [alpha, Boric, MgSO4, H2O] = sound_absorption_sea_fisher(T,D,f)
+% Arguments
+%   T: temperature \ degree Celsius
+%   D: depth \ m
+%   f: frequency \ kHz \ 10 &lt; f &lt; 400
+% Results
+%   alpha: absorption of sound in seawater \ dB/km
+
+    T_kel = 273.1 + T;
+    P = D ./ 10.0;
+    f = f * 1e3;
+
+    % Boric
+    A1 = (1.03e-8) + (2.36e-10)*T - (5.22e-12)*(T.^2);
+    P1 = 1;
+    f1 = (1.32e3)*T_kel.*exp(-1700./T_kel);
+    Boric = (A1.*P1.*f1.*(f.^2))./((f.^2)+(f1.^2));
+    Boric = Boric * 8686;
+
+    % MgSO4
+    A2 = (5.62e-8) + (7.52e-10)*T;
+    P2 = 1 - (10.3e-4)*P + (3.7e-7)*(P.^2);
+    f2 = (1.55e7)*T_kel.*exp(-3052./T_kel);
+    MgSO4 = (A2.*P2.*f2.*(f.^2))./((f.^2)+(f2.^2));
+    MgSO4 = MgSO4 * 8686;
+
+    % H2O
+    A3 = (55.9 - 2.37*T + (4.77e-2)*(T.^2) - (3.48e-4)*(T.^3))*(1e-15);
+    P3 = 1 - (3.84e-4)*P + (7.57e-8)*(P.^2);
+    H2O = A3.*P3.*(f.^2);
+    H2O = H2O * 8686;
+
+    % Total
+    alpha = (Boric + MgSO4 + H2O);
+end
+</code></pre>
+<h2 id="computational-examples">Computational examples</h2>
+<p><img alt="" src="../img/sound_absorption_sea_fisher.en-1.png" /></p>
+<h2 id="references">References</h2>
+<ol>
+<li>Fisher, FH; Simmons, VP, "Sound absorption in sea water", 1977</li>
+<li>Lyman, John; Fleming, Richard H, "Composition of sea water", 1940</li>
+</ol>
+              
+            </div>
+          </div><footer>
+  <hr/>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Made with MkDocs using ReadTheDocsTheme</p>
+    <!-- Technical Info
+    MkDocs version : 1.4.2
+    Build Date UTC : 2022-12-19 21:50:02.075502+00:00
+     -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../sound_absorption_sea_francois.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sound_absorption_sea_ainslie.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        };
+    </script>
+
+</body>
+</html>

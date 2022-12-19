@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ISO 9613-1 sound absorption equation - SONAR.m/docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <link rel="stylesheet" href="../css/theme_extra_custom.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ISO 9613-1 sound absorption equation";
+        var mkdocs_page_input_path = "sound_absorption_air_iso.en.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="../js/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // auto-render specific keys
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+                {left: "\\begin{align}", right: "\\end{align}", display: true},
+                {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+                {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+              ],
+              ignoredTags: [
+                "script", "noscript", "style", "textarea", "pre", "code"
+              ],
+              // rendering keys
+              displayMode : true,
+              output : "htmlAndMathml", // html mathml htmlAndMathml
+              leqno : false,
+              fleqn : true,
+              throwOnError : false,
+              errorColor : "#cc0000",
+              minRuleThickness : 0.04,
+              colorIsTextColor : true,
+              maxSize : Infinity,
+              maxExpand : 1000,
+              strict : "warn",
+              trust : true,
+              //macros : {"\\f":"#1f(#2)"}
+            });
+        });
+    </script> 
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SONAR.m/docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search"
+      title="Type and press ENTER" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
+        <!-- INDEX -->
+          <ul class="">
+              <li class="toctree-l0">
+                <a class="reference internal" href="..">Index</a>
+              </li>
+          </ul>
+        
+        <!-- SECTION -->
+            <ul class="current">
+              <li class="toctree-l1 current"><a class="reference internal current" 
+href="#">Sound in air</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_air_cramer.en/">Cramer sound speed equation</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" 
+href="./">ISO 9613-1 sound absorption equation</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#octavematlab-implementation">Octave/Matlab implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#computational-examples">Computational examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+              </li>
+            </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SONAR.m/docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                  <h1 id="sound-absorption-in-air-iso-9613-1-equation">Sound absorption in air. ISO 9613-1 equation</h1>
+<h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
+<pre><code>function alpha = sound_absorption_air_iso(T,RH,P,f)
+% Arguments
+%   T: temperature \ degree Celsius
+%   RH: relative humidity \ percentage
+%   P: pressure \ kPa
+%   f: frequency \ kHz
+% Results
+%   alpha: absorption of sound in air \
+
+    Kelvin = 273.15;
+    T_ref = Kelvin + 20;
+    T_kel = Kelvin + T;
+    T_rel = T_kel / T_ref;
+    T_01 = Kelvin + 0.01;
+    P_ref = 101.325;
+    P_rel = P / P_ref;
+
+    P_sat_over_P_ref = 10.^(-6.8346*(T_01./T_kel).^(1.261) + 4.6151);
+    H = RH.*(P_sat_over_P_ref./P_rel);
+
+    Fro = P_rel.*(24 + 40400*H.*(0.02 + H)./(0.391 + H));
+    Frn = P_rel./sqrt(T_rel).*(9 + 280*H*exp(-4.17*(T_rel.^(-1/3) - 1)));
+    Xc = 1.8400e-11 ./ P_rel * sqrt(T_rel);
+    Xo = 0.01275 * exp(-2239.1./T_kel)./(Fro + ((f.^2) / Fro));
+    Xn = 0.1068 * exp(-3352./T_kel)./(Frn + ((f.^2)./Frn));
+
+    alpha = 20*log10(exp(1)).*(f.^2).*(Xc + (T_rel.^(-5/2)).*(Xo + Xn));
+end
+</code></pre>
+<h2 id="computational-examples">Computational examples</h2>
+<p>@MDT_ERROR: Bad eval result sound_absorption_air_iso_ex_1</p>
+<h2 id="references">References</h2>
+              
+            </div>
+          </div><footer>
+  <hr/>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Made with MkDocs using ReadTheDocsTheme</p>
+    <!-- Technical Info
+    MkDocs version : 1.4.2
+    Build Date UTC : 2022-12-19 21:50:02.073912+00:00
+     -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../sound_speed_air_cramer.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sound_speed_sea_coppens.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        };
+    </script>
+
+</body>
+</html>

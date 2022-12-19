@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Del Grosso equation - SONAR.m/docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <link rel="stylesheet" href="../css/theme_extra_custom.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Del Grosso equation";
+        var mkdocs_page_input_path = "sound_speed_sea_delgrosso.en.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="../js/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // auto-render specific keys
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+                {left: "\\begin{align}", right: "\\end{align}", display: true},
+                {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+                {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+              ],
+              ignoredTags: [
+                "script", "noscript", "style", "textarea", "pre", "code"
+              ],
+              // rendering keys
+              displayMode : true,
+              output : "htmlAndMathml", // html mathml htmlAndMathml
+              leqno : false,
+              fleqn : true,
+              throwOnError : false,
+              errorColor : "#cc0000",
+              minRuleThickness : 0.04,
+              colorIsTextColor : true,
+              maxSize : Infinity,
+              maxExpand : 1000,
+              strict : "warn",
+              trust : true,
+              //macros : {"\\f":"#1f(#2)"}
+            });
+        });
+    </script> 
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SONAR.m/docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search"
+      title="Type and press ENTER" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation">
+        <!-- INDEX -->
+          <ul class="">
+              <li class="toctree-l0">
+                <a class="reference internal" href="..">Index</a>
+              </li>
+          </ul>
+        
+        <!-- SECTION -->
+            <ul class="current">
+              <li class="toctree-l1 current"><a class="reference internal current" 
+href="#">Sound speed in sea</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_coppens.en/">Coppens equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_mackenzie.en/">Mackenzie equation</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" 
+href="./">Del Grosso equation</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#mathematical-definition">Mathematical definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#octavematlab-implementation">Octave/Matlab implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#computational-examples">Computational examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
+        href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_unesco.en/">Chen & Millero equation (UNESCO)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_sea_npl.en/">Leroy et al. equation (NPL)</a>
+                </li>
+    </ul>
+              </li>
+            </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SONAR.m/docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                  <h1 id="sound-speed-in-sea-del-grosso-equation">Sound speed in sea. Del Grosso equation</h1>
+<h2 id="mathematical-definition">Mathematical definition</h2>
+<p>$$\boxed{C\left( {T,S,P} \right) = {C_{002}} + \Delta {C_T} + \Delta {C_S} + \Delta {C_P} + \Delta {C_{TPS}}}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Conversion</th>
+<th>Units</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C$</td>
+<td>sound speed</td>
+<td></td>
+<td>$m/s$</td>
+<td></td>
+</tr>
+<tr>
+<td>$T$</td>
+<td>temperature</td>
+<td></td>
+<td>$^{\circ}C$</td>
+<td>$0 &lt; T &lt; 35$</td>
+</tr>
+<tr>
+<td>$S$</td>
+<td>salinity</td>
+<td></td>
+<td>$‰$</td>
+<td>$29 &lt; S &lt; 43$</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>pressure</td>
+<td>$\times 1.019716 \times 10^{-2}$</td>
+<td>$kPa$</td>
+<td>$0 &lt; P &lt; 98000$</td>
+</tr>
+</tbody>
+</table>
+<p>$$\Delta {C_T}\left( T \right) = {C_{T1}}T + {C_{T2}}{T^2} + {C_{T3}}{T^3}$$</p>
+<p>$$\Delta {C_S}\left( S \right) = {C_{S1}}S + {C_{S2}}{S^2}$$</p>
+<p>$$\Delta {C_P}\left( P \right) = {C_{P1}}P + {C_{P2}}{P^2} + {P_{P3}}{P^3}$$</p>
+<p>$$\begin{array}{l}
+\Delta {C_{TPS}}\left( {T,P,S} \right) = {C_{TP}}TP + {C_{T3P}}{T^3}P + {C_{TP2}}T{P^2}\\
+ + {C_{T2P2}}{T^2}{P^2} + {C_{TP3}}T{P^3} + {C_{ST}}ST\\
+ + {C_{ST2}}S{T^2} + {C_{STP}}STP + {C_{S2TP}}{S^2}TP + {C_{S2P2}}{S^2}{P^2}
+\end{array}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Value</th>
+<th>Coefficient</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C_{000}$</td>
+<td>$1402.392$</td>
+<td>$C_{ST}$</td>
+<td>$-0.1275936\times10^{-1}$</td>
+</tr>
+<tr>
+<td>$C_{T1}$</td>
+<td>$0.5012285\times10^{1}$</td>
+<td>$C_{TP}$</td>
+<td>$0.6353509\times10^{-2}$</td>
+</tr>
+<tr>
+<td>$C_{T2}$</td>
+<td>$-0.551184\times10^{-1}$</td>
+<td>$C_{T2P2}$</td>
+<td>$0.2656174\times10^{-7}$</td>
+</tr>
+<tr>
+<td>$C_{T3}$</td>
+<td>$0.221649\times10^{-3}$</td>
+<td>$C_{TP2}$</td>
+<td>$-0.1593895\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{S1}$</td>
+<td>$0.1329530\times10^{1}$</td>
+<td>$C_{TP3}$</td>
+<td>$0.5222483\times10^{-9}$</td>
+</tr>
+<tr>
+<td>$C_{S2}$</td>
+<td>$0.1288598\times10^{-3}$</td>
+<td>$C_{T3P}$</td>
+<td>$-0.4383615\times10^{-6}$</td>
+</tr>
+<tr>
+<td>$C_{P1}$</td>
+<td>$0.1560592$</td>
+<td>$C_{S2P2}$</td>
+<td>$-0.1616745\times10^{-8}$</td>
+</tr>
+<tr>
+<td>$C_{P2}$</td>
+<td>$0.2449993\times10^{-4}$</td>
+<td>$C_{T2S}$</td>
+<td>$0.9688441\times10^{-4}$</td>
+</tr>
+<tr>
+<td>$C_{P3}$</td>
+<td>$-0.8833959\times10^{-8}$</td>
+<td>$C_{S2TP}$</td>
+<td>$0.4857614\times10^{-5}$</td>
+</tr>
+<tr>
+<td>$C_{TSP}$</td>
+<td>$-0.3406824\times10^{-3}$</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
+<pre><code>function C = sound_speed_sea_delgrosso(T,S,P)
+% Arguments
+%   T: temperature \ degree Celsius \ 0 &lt; T &lt; 35 
+%   S: salinity \ ppt \ 29 &lt; S &lt; 43
+%   P: pressure \ kPa \ 0 &lt; P &lt; 98000 
+% Results
+%   C: speed of sound in seawater \ m/s
+
+    C000 = 1402.392;
+    CT1 = 0.5012285e1;
+    CT2 = -0.551184e-1;
+    CT3 = 0.221649e-3;
+    CS1 = 0.1329530e1;
+    CS2 = 0.1288598e-3;
+    CP1 = 0.1560592;
+    CP2 = 0.2449993e-4;
+    CP3 = -0.8833959e-8;
+    CST = -0.1275936e-1;
+    CTP = 0.6353509e-2;
+    CT2P2 = 0.2656174e-7;
+    CTP2 = -0.1593895e-5;
+    CTP3 = 0.5222483e-9;
+    CT3P = -0.4383615e-6;
+    CS2P2 = -0.1616745e-8;
+    CST2 = 0.9688441e-4;
+    CS2TP = 0.4857614e-5;
+    CSTP =-0.3406824e-3;
+
+    p = (P./100)*1.019716;
+
+    CT = CT1*T + CT2*(T.^2) + CT3*(T.^3);
+    CS = CS1*S + CS2*(S.^2);
+    CP = CP1*p + CP2*(p.^2) + CP3*(p.^3);
+    CSTP = CTP*T.*p + CT3P*(T.^3).*p + CTP2*T.*(p.^2) + ...
+        CT2P2*(T.^2).*(p.^2) + CTP3*T.*(p.^3) + ...
+        CST*S.*T + CST2*S.*(T.^2) + CSTP*S.*T.*p + ...
+        CS2TP*(S.^2)*T.*p + CS2P2*(S.^2).*(p.^2);
+
+    C = C000 + CT + CS + CP + CSTP;
+end
+</code></pre>
+<h2 id="computational-examples">Computational examples</h2>
+<p><img alt="" src="../img/sound_speed_sea_delgrosso.en-1.png" /></p>
+<table>
+<thead>
+<tr>
+<th>$D$\$T$</th>
+<th>$0°\text{C}$</th>
+<th>$10°\text{C}$</th>
+<th>$20°\text{C}$</th>
+<th>$30°\text{C}$</th>
+<th>$40°\text{C}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$10\ m$</td>
+<td>$1442.55$</td>
+<td>$1483.85$</td>
+<td>$1516.04$</td>
+<td>$1540.44$</td>
+<td>$1558.37$</td>
+</tr>
+<tr>
+<td>$1000\ m$</td>
+<td>$1458.67$</td>
+<td>$1500.30$</td>
+<td>$1532.61$</td>
+<td>$1556.65$</td>
+<td>$1573.49$</td>
+</tr>
+<tr>
+<td>$2000\ m$</td>
+<td>$1475.45$</td>
+<td>$1517.18$</td>
+<td>$1549.48$</td>
+<td>$1573.14$</td>
+<td>$1588.94$</td>
+</tr>
+<tr>
+<td>$5000\ m$</td>
+<td>$1528.32$</td>
+<td>$1569.16$</td>
+<td>$1600.96$</td>
+<td>$1623.67$</td>
+<td>$1637.27$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ol>
+<li>Del Grosso, Vincent A, "New equation for the speed of sound in natural waters (with comparisons to other equations)", 1974</li>
+</ol>
+              
+            </div>
+          </div><footer>
+  <hr/>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Made with MkDocs using ReadTheDocsTheme</p>
+    <!-- Technical Info
+    MkDocs version : 1.4.2
+    Build Date UTC : 2022-12-19 21:50:02.080375+00:00
+     -->
+  </div>
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../sound_speed_sea_mackenzie.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../sound_speed_sea_unesco.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(false);
+        };
+    </script>
+
+</body>
+</html>
