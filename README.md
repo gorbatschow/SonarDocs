@@ -1,2 +1,2 @@
 # SonarDocs
-Extended documentation for SONAR.m toolbox
+Extended documentation for ![Sonar.m](https://github.com/gorbatschow/Sonar.m) toolbox
