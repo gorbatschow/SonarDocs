@@ -135,6 +135,122 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
               
                   <h1 id="sound-speed-in-air-cramer-equation">Sound speed in air. Cramer equation</h1>
 <h2 id="mathematical-definition">Mathematical definition</h2>
+<p>$$\boxed{\begin{array}{l}
+    C\left( {T,P,{X_w},{X_c}} \right) = {a_0} + {a_1}T + {a_2}{T^2} + \left( {{a_3} + {a_4}T + {a_5}{T^2}} \right){X_w}\\
+     + \left( {{a_6} + {a_7}T + {a_8}{T^2}} \right)P + \left( {{a_9} + {a_{10}}T + {a_{11}}{T^2}} \right){X_c}\\
+     + {a_{12}}{X_w}^2 + {a_{13}}{P^2} + {a_{14}}{X_c}^2 + {a_{15}}{X_w}P{X_c}
+\end{array}}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Units</th>
+<th>Conversion</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C$</td>
+<td>sound speed</td>
+<td>$m/s$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$T$</td>
+<td>temperature</td>
+<td>$^{\circ}C$</td>
+<td></td>
+<td>$0 &lt; T &lt; 30$</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>pressure</td>
+<td>$kPa$</td>
+<td>$\times 10^{3}$</td>
+<td>$75 &lt; P &lt; 102$</td>
+</tr>
+<tr>
+<td>$X_{w}$</td>
+<td>water vapor mole fraction</td>
+<td></td>
+<td></td>
+<td>$X_{w} &lt; 0.06$</td>
+</tr>
+<tr>
+<td>$X_{c}$</td>
+<td>carbon dioxide mole fraction</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Value</th>
+<th>Coefficient</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$a_{1}$</td>
+<td>$331.5024$</td>
+<td>$a_{9}$</td>
+<td>$-85.20931$</td>
+</tr>
+<tr>
+<td>$a_{2}$</td>
+<td>$0.603055$</td>
+<td>$a_{10}$</td>
+<td>$-0.228525$</td>
+</tr>
+<tr>
+<td>$a_{3}$</td>
+<td>$-0.000528$</td>
+<td>$a_{11}$</td>
+<td>$5.91e-5$</td>
+</tr>
+<tr>
+<td>$a_{4}$</td>
+<td>$51.471935$</td>
+<td>$a_{12}$</td>
+<td>$-2.835149$</td>
+</tr>
+<tr>
+<td>$a_{5}$</td>
+<td>$0.1495874$</td>
+<td>$a_{13}$</td>
+<td>$-2.15e-13$</td>
+</tr>
+<tr>
+<td>$a_{6}$</td>
+<td>$-0.000782$</td>
+<td>$a_{14}$</td>
+<td>$29.179762$</td>
+</tr>
+<tr>
+<td>$a_{7}$</td>
+<td>$-1.82 \times 10^{-7}$</td>
+<td>$a_{15}$</td>
+<td>$0.000486$</td>
+</tr>
+<tr>
+<td>$a_{8}$</td>
+<td>$3.73 \times 10^{-8}$</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>$${p_{sv}} = 1{\rm{Pa}} \times \exp \left( {A{T_K}^2 + B{T_K} + C + \frac{D}{{{T_K}}}} \right)$$</p>
+
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_air_cramer(T,RH,P)
 % Arguments
@@ -168,6 +284,10 @@ end
 <h2 id="computational-examples">Computational examples</h2>
 <p><img alt="" src="../img/sound_speed_air_cramer.en-1.png" /></p>
 <h2 id="references">References</h2>
+<ol>
+<li>Cramer, Owen, "The variation of the specific heat ratio and the speed of sound in air with temperature, pressure, humidity, and CO2 concentration", 1993</li>
+<li>Davis, Richard S, "Equation for the determination of the density of moist air (1981/91)", 1992</li>
+</ol>
               
             </div>
           </div><footer>
@@ -177,7 +297,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2022-12-20 12:12:01.072774+00:00
+    Build Date UTC : 2022-12-23 08:59:27.662712+00:00
      -->
   </div>
 </footer>
