@@ -201,13 +201,13 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <tbody>
 <tr>
 <td>$a_{1}$</td>
-<td>$331.5024$</td>
+<td>$+331.5024$</td>
 <td>$a_{9}$</td>
 <td>$-85.20931$</td>
 </tr>
 <tr>
 <td>$a_{2}$</td>
-<td>$0.603055$</td>
+<td>$+0.603055$</td>
 <td>$a_{10}$</td>
 <td>$-0.228525$</td>
 </tr>
@@ -215,35 +215,35 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <td>$a_{3}$</td>
 <td>$-0.000528$</td>
 <td>$a_{11}$</td>
-<td>$5.91e-5$</td>
+<td>$+5.91 \times 10^{-5}$</td>
 </tr>
 <tr>
 <td>$a_{4}$</td>
-<td>$51.471935$</td>
+<td>$+51.471935$</td>
 <td>$a_{12}$</td>
 <td>$-2.835149$</td>
 </tr>
 <tr>
 <td>$a_{5}$</td>
-<td>$0.1495874$</td>
+<td>$+0.1495874$</td>
 <td>$a_{13}$</td>
-<td>$-2.15e-13$</td>
+<td>$-2.15 \times 10^{-13}$</td>
 </tr>
 <tr>
 <td>$a_{6}$</td>
 <td>$-0.000782$</td>
 <td>$a_{14}$</td>
-<td>$29.179762$</td>
+<td>$+29.179762$</td>
 </tr>
 <tr>
 <td>$a_{7}$</td>
 <td>$-1.82 \times 10^{-7}$</td>
 <td>$a_{15}$</td>
-<td>$0.000486$</td>
+<td>$+0.000486$</td>
 </tr>
 <tr>
 <td>$a_{8}$</td>
-<td>$3.73 \times 10^{-8}$</td>
+<td>$+3.73 \times 10^{-8}$</td>
 <td></td>
 <td></td>
 </tr>
@@ -251,6 +251,108 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 </table>
 <p>$${p_{sv}} = 1{\rm{Pa}} \times \exp \left( {A{T_K}^2 + B{T_K} + C + \frac{D}{{{T_K}}}} \right)$$</p>
 
+<p>$$f = \alpha  + \beta P + \gamma {T^2}$$</p>
+
+<p>$${x_v} = hf\left( {P,T} \right)\frac{{{p_{sv}}\left( T \right)}}{P}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Value</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A$</td>
+<td>$+1.2378847 \times 10^{-5}$</td>
+<td>$K^{-2}$</td>
+</tr>
+<tr>
+<td>$B$</td>
+<td>$-1.9121316 \times 10^{-2}$</td>
+<td>$K^{-1}$</td>
+</tr>
+<tr>
+<td>$C$</td>
+<td>$+33.93711047$</td>
+<td></td>
+</tr>
+<tr>
+<td>$D$</td>
+<td>$-6.3431645 \times 10^{3}$</td>
+<td>$K$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Value</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td>$+1.00062$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\beta$</td>
+<td>$+3.14 \times 10^{-8}$</td>
+<td>$Pa^{-1}$</td>
+</tr>
+<tr>
+<td>$\gamma$</td>
+<td>$+5.6 \times 10^{-7}$</td>
+<td>$K^{-2}$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Units</th>
+<th>Conversion</th>
+<th>Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$p_{sv}$</td>
+<td>saturation vapour pressure of moist air</td>
+<td>$Pa$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$f$</td>
+<td>enhancement factor</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$x_{v}$</td>
+<td>the mole fraction of water vapour</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>relative humidity</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_air_cramer(T,RH,P)
 % Arguments
@@ -263,11 +365,18 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
     T_kel = T + 273.15;
     P = P*1e3;
 
-    ENH = (3.14e-8)*P + 1.00062 + (T.^2)*(5.6e-7);
-    PSV1 = (T_kel.^2)*(1.2378847e-5) - (1.9121316e-2)*T_kel;
-    PSV2 = 33.93711047 - (6.3431645e3)./T_kel;
-    PSV = exp(PSV1).*exp(PSV2);
-    H = RH.*ENH.*PSV./P;
+    A = +1.2378847e-5;
+    B = -1.9121316e-2;
+    C = +33.93711047;
+    D = -6.3431645e3;
+
+    alpha = 1.00062;
+    beta = 3.14e-8;
+    gamma = 5.6e-7;
+
+    Psv = exp(A*(T_kel.^2) + B*T_kel + C + D./T_kel);
+    F = alpha + beta*P + gamma*(T.^2);
+    H = RH.*F.*Psv./P;
     Xw = H/100.0;
     Xc = 400e-6;
 
@@ -287,6 +396,7 @@ end
 <ol>
 <li>Cramer, Owen, "The variation of the specific heat ratio and the speed of sound in air with temperature, pressure, humidity, and CO2 concentration", 1993</li>
 <li>Davis, Richard S, "Equation for the determination of the density of moist air (1981/91)", 1992</li>
+<li>Giacomo, P, "Equation for the determination of the density of moist air (1981)", 1982</li>
 </ol>
               
             </div>
@@ -297,7 +407,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2022-12-23 08:59:27.662712+00:00
+    Build Date UTC : 2022-12-24 06:36:07.810973+00:00
      -->
   </div>
 </footer>
