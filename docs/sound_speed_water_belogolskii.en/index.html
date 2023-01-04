@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Bilaniuk & Wong 112 point euqation - SONAR.m/docs</title>
+    <title>Belogolskii & Sekoyan equation - SONAR.m/docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
     <link rel="stylesheet" href="../css/theme_extra_custom.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Bilaniuk \u0026 Wong 112 point euqation";
-        var mkdocs_page_input_path = "sound_speed_water_bilaniuk_112.en.md";
+        var mkdocs_page_name = "Belogolskii \u0026 Sekoyan equation";
+        var mkdocs_page_input_path = "sound_speed_water_belogolskii.en.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -98,8 +98,23 @@ href="#">Sound speed in pure water</a>
                 <li class="toctree-l2"><a class="reference internal" 
 href="../sound_speed_water_bilaniuk_36.en/">Bilaniuk & Wong 36 point euqation</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_water_bilaniuk_112.en/">Bilaniuk & Wong 112 point euqation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_water_bilaniuk_148.en/">Bilaniuk & Wong 148 point euqation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_water_marczak.en/">Marczak Equation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_water_lubbers_b1.en/">Lubbers & Graaff B1</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" 
+href="../sound_speed_water_lubbers_c1.en/">Lubbers & Graaff C1</a>
+                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" 
-href="./">Bilaniuk & Wong 112 point euqation</a>
+href="./">Belogolskii & Sekoyan equation</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" 
         href="#mathematical-definition">Mathematical definition</a>
@@ -114,21 +129,6 @@ href="./">Bilaniuk & Wong 112 point euqation</a>
         href="#references">References</a>
     </li>
     </ul>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" 
-href="../sound_speed_water_bilaniuk_148.en/">Bilaniuk & Wong 148 point euqation</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" 
-href="../sound_speed_water_marczak.en/">Marczak Equation</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" 
-href="../sound_speed_water_lubbers_b1.en/">Lubbers & Graaff B1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" 
-href="../sound_speed_water_lubbers_c1.en/">Lubbers & Graaff C1</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" 
-href="../sound_speed_water_belogolskii.en/">Belogolskii & Sekoyan equation</a>
                 </li>
     </ul>
               </li>
@@ -148,9 +148,12 @@ href="../sound_speed_water_belogolskii.en/">Belogolskii & Sekoyan equation</a>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                  <h1 id="sound-speed-in-pure-water-bilaniuk-wong-112-point-equation">Sound speed in pure water. Bilaniuk &amp; Wong 112 point equation</h1>
+                  <h1 id="sound-speed-in-pure-water-belogolskii-sekoyan-et-al-equation">Sound speed in pure water. Belogol'skii, Sekoyan et al equation</h1>
 <h2 id="mathematical-definition">Mathematical definition</h2>
-<p>$$\boxed{C\left( T \right) = {k_0} + {k_1}T + {k_2}{T^2} + {k_3}{T^3} + {k_4}{T^4} + {k_5}{T^5}}$$</p>
+<p>$$\boxed{\begin{array}{l}
+C\left( {T,P} \right) = C\left( {T,0} \right) + {M_1}\left( T \right)\left( {P - 0.101325} \right)\\
+    + {M_2}\left( T \right){\left( {P - 0.101325} \right)^2} + {M_3}\left( T \right){\left( {P - 0.101325} \right)^3}
+\end{array}}$$</p>
 
 <table>
 <thead>
@@ -175,68 +178,136 @@ href="../sound_speed_water_belogolskii.en/">Belogolskii & Sekoyan equation</a>
 <td>temperature</td>
 <td>$^{\circ}C$</td>
 <td></td>
-<td>$0 &lt; T &lt; 100$</td>
+<td>$0 &lt; T &lt; 40$</td>
+</tr>
+<tr>
+<td>$P$</td>
+<td>pressure</td>
+<td>$kPa$</td>
+<td>$\times 10^{-3}$</td>
+<td>$100 &lt; P &lt; 60000$</td>
 </tr>
 </tbody>
 </table>
+<p>$$C\left( {T,0} \right) = {a_{00}} + {a_{10}}T + {a_{20}}{T^2} + {a_{30}}{T^3} + {a_{40}}{T^4} + {a_{50}}{T^5}$$</p>
+<p>$${M_1}\left( T \right) = {a_{01}} + {a_{11}}T + {a_{21}}{T^2} + {a_{31}}{T^3}$$</p>
+<p>$${M_2}\left( T \right) = {a_{02}} + {a_{12}}T + {a_{22}}{T^2} + {a_{32}}{T^3}$$</p>
+<p>$${M_3}\left( T \right) = {a_{03}} + {a_{13}}T + {a_{23}}{T^2} + {a_{33}}{T^3}$$</p>
+
 <table>
 <thead>
 <tr>
+<th>Coefficient</th>
+<th>Value</th>
 <th>Coefficient</th>
 <th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>$k_{0}$</td>
-<td>$+1.40238742 \times 10^{3}$</td>
+<td>$a_{00}$</td>
+<td>$+1402.38744$</td>
+<td>$a_{02}$</td>
+<td>$+4.31532833 \times 10^{-3}$</td>
 </tr>
 <tr>
-<td>$k_{1}$</td>
-<td>$+5.03821344$</td>
+<td>$a_{10}$</td>
+<td>$+5.03836171$</td>
+<td>$a_{12}$</td>
+<td>$-2.938590293 \times 10^{-4}$</td>
 </tr>
 <tr>
-<td>$k_{2}$</td>
-<td>$-5.80539349 \times 10^{-2}$</td>
+<td>$a_{20}$</td>
+<td>$-5.81172916 \times 10^{-2}$</td>
+<td>$a_{22}$</td>
+<td>$+6.822485943 \times 10^{-6}$</td>
 </tr>
 <tr>
-<td>$k_{3}$</td>
-<td>$+3.32000870 \times 10^{-4}$</td>
+<td>$a_{30}$</td>
+<td>$+3.34638117 \times 10^{-4}$</td>
+<td>$a_{32}$</td>
+<td>$-6.674551162 \times 10^{-8}$</td>
 </tr>
 <tr>
-<td>$k_{4}$</td>
-<td>$-1.44537900 \times 10^{-6}$</td>
+<td>$a_{40}$</td>
+<td>$-1.48259672 \times 10^{-6}$</td>
+<td>$a_{03}$</td>
+<td>$-1.852993525 \times 10^{-5}$</td>
 </tr>
 <tr>
-<td>$k_{5}$</td>
-<td>$+2.99402365 \times 10^{-9}$</td>
+<td>$a_{50}$</td>
+<td>$+3.16585020 \times 10^{-9}$</td>
+<td>$a_{13}$</td>
+<td>$+1.481844713 \times 10^{-6}$</td>
+</tr>
+<tr>
+<td>$a_{01}$</td>
+<td>$+1.49043589$</td>
+<td>$a_{23}$</td>
+<td>$-3.940994021 \times 10^{-8}$</td>
+</tr>
+<tr>
+<td>$a_{11}$</td>
+<td>$+1.077850609 \times 10^{-2}$</td>
+<td>$a_{33}$</td>
+<td>$+3.939902307 \times 10^{-10}$</td>
+</tr>
+<tr>
+<td>$a_{21}$</td>
+<td>$-2.232794656 \times 10^{-4}$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$a_{31}$</td>
+<td>$+2.718246452 \times 10^{-6}$</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
-<pre><code>function C = sound_speed_water_bilaniuk_112(T)
+<pre><code>function C = sound_speed_water_belogolskii(T, P)
 % Arguments
-%    T: temperature \ degree Celsius \ 0 &lt; T &lt; 100
+%    T: temperature \ degree Celsius \ 0 &lt; T &lt; 40
+%    P: pressure \ kPa \ 100 &lt; P &lt; 60000
 % Results
 %    C: speed of sound in pure water \ m/s
 
-    k0 = +1.40238742e+3;
-    k1 = +5.03821344e+0;
-    k2 = -5.80539349e-2;
-    k3 = +3.32000870e-4;
-    k4 = -1.44537900e-6;
-    k5 = +2.99402365e-9;
+    P = P*1e-3;
 
-    C = k0*(T.^0) + k1*(T.^1) + k2*(T.^2) ...
-        + k3*(T.^3) + k4*(T.^4) + k5*(T.^5);
+    a00 = +1402.38744;
+    a10 = +5.03836171;
+    a20 = -5.81172916e-2;
+    a30 = +3.34638117e-4;
+    a40 = -1.48259672e-6;
+    a50 = +3.16585020e-9;
+    a01 = +1.49043589;
+    a11 = +1.077850609e-2;
+    a21 = -2.232794656e-4;
+    a31 = +2.718246452e-6;
+    a02 = +4.315328330e-3;
+    a12 = -2.938590293e-4;
+    a22 = +6.822485943e-6;
+    a32 = -6.674551162e-8;
+    a03 = -1.852993525e-5;
+    a13 = +1.481844713e-6;
+    a23 = -3.940994021e-8;
+    a33 = +3.939902307e-10;
+
+    C0 = a00 + a10*T + a20*(T.^2) + a30*(T.^3) + a40*(T.^4) + a50*(T.^5);
+    M1 = a01 + a11*T + a21*(T.^2) + a31*(T.^3);
+    M2 = a02 + a12*T + a22*(T.^2) + a32*(T.^3);
+    M3 = a03 + a13*T + a23*(T.^2) + a33*(T.^3);
+    C = C0 + M1.*(P - 0.101325) + M2.*((P - 0.101325).^2) ...
+        + M3.*((P - 0.101325).^3);
 end
 </code></pre>
 <h2 id="computational-examples">Computational examples</h2>
-<p><img alt="" src="../img/sound_speed_water_bilaniuk_112.en-1.png" /></p>
+<p><img alt="" src="../img/sound_speed_water_belogolskii.en-1.png" /></p>
 <h2 id="references">References</h2>
 <ol>
-<li>Bilaniuk, Nykolai; Wong, George SK, "Speed of sound in pure water as a function of temperature", 1993</li>
-<li>Bilaniuk, Nykolai; Wong, George SK, "Erratum: Speed of sound in pure water as a function of temperature [J. Acoust. Soc. Am. 93, 1609–1612 (1993)]", 1996</li>
+<li>Belogol'Skii, VA; Sekoyan, SS; Samorukova, LM; Stefanov, SR; Levtsov, VI, "Pressure dependence of the sound velocity in distilled water", 1999</li>
 </ol>
               
             </div>
@@ -247,7 +318,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.784459+00:00
+    Build Date UTC : 2023-01-04 08:14:38.783355+00:00
      -->
   </div>
 </footer>
@@ -263,10 +334,10 @@ end
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../sound_speed_water_bilaniuk_36.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../sound_speed_water_lubbers_c1.en/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../sound_speed_water_bilaniuk_148.en/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../sound_speed_sea_coppens.en/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
