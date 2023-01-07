@@ -102,6 +102,9 @@ href="../sound_speed_air_cramer.en/">Cramer sound speed equation</a>
 href="./">ISO 9613-1 sound absorption equation</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" 
+        href="#mathematical-definition">Mathematical definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
         href="#octavematlab-implementation">Octave/Matlab implementation</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" 
@@ -131,39 +134,223 @@ href="./">ISO 9613-1 sound absorption equation</a>
             <div class="section" itemprop="articleBody">
               
                   <h1 id="sound-absorption-in-air-iso-9613-1-equation">Sound absorption in air. ISO 9613-1 equation</h1>
+<h2 id="mathematical-definition">Mathematical definition</h2>
+<p>$$\boxed{\alpha  = {\alpha _{cl}} + {\alpha _{rot}} + {\alpha _{vib,O}} + {\alpha _{vib,N}}}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Units</th>
+<th>Limits</th>
+<th>Conversion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha$</td>
+<td>pure-tone sound attenuation coefficient</td>
+<td>$\text{dB/m}$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$T$</td>
+<td>ambient atmospheric temperature</td>
+<td>$^{\circ}\text{C}$</td>
+<td>$-20 &lt; T &lt; +50$</td>
+<td>$=T+273.15$ $\text{K}$</td>
+</tr>
+<tr>
+<td>$h_{r}$</td>
+<td>relative humidity</td>
+<td>$\text{\%}$</td>
+<td>$10 &lt; h_{r} &lt; 100$</td>
+<td></td>
+</tr>
+<tr>
+<td>$p_{a}$</td>
+<td>atmosperica pressure</td>
+<td>$\text{kPa}$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>$f$</td>
+<td>frequency</td>
+<td>$\text{kHz}$</td>
+<td>$0.05 &lt; f &lt; 10$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>$${\alpha _{cr}} = {\alpha _{cl}} + {\alpha _{rot}} = \frac{{1.60 \times {{10}^{ - 10}}{{\left( {T/{T_0}} \right)}^{\frac{1}{2}}}{f^2}}}{{{p_a}/{p_r}}}$$</p>
+<p>$${\alpha _{vib,O}} = {\left( {\alpha \lambda } \right)_{max,O}}\left( {f/c} \right)\left( {2\left( {f/{f_{rO}}} \right){{\left( {1 + {{\left( {f/{f_{rO}}} \right)}^2}} \right)}^{ - 1}}} \right)$$</p>
+<p>$${\alpha _{vib,N}} = {\left( {\alpha \lambda } \right)_{max ,N}}\left( {f/c} \right)\left( {2\left( {f/{f_{rN}}} \right){{\left( {1 + {{\left( {f/{f_{rN}}} \right)}^2}} \right)}^{ - 1}}} \right)$$</p>
+<p>$${\left( {\alpha \lambda } \right)_{max,O}} = \left( {2\pi /35} \right)\left( {10\lg \left( {{e^2}} \right)} \right){X_O}{\left( {{\theta _O}/T} \right)^2}\exp \left( { - {\theta _O}/T} \right)$$</p>
+<p>$${\left( {\alpha \lambda } \right)_{max,N}} = \left( {2\pi /35} \right)\left( {10\lg \left( {{e^2}} \right)} \right){X_N}{\left( {{\theta _N}/T} \right)^2}\exp \left( { - {\theta _N}/T} \right)$$</p>
+<p>$$c = 343.2{\left( {T/{T_0}} \right)^{\frac{1}{2}}}$$</p>
+<p>$${f_{rO}} = \frac{{{p_a}}}{{{p_r}}}\left( {24 + 4.04 \times {{10}^4}h\frac{{0.02 + h}}{{0.391 + h}}} \right)$$</p>
+<p>$${f_{rN}} = \frac{{{p_a}}}{{{p_r}}}{\left( {\frac{T}{{{T_0}}}} \right)^{ - \frac{1}{2}}}\left( {9 + 280h\exp \left( { - 4.170\left( {{{\left( {\frac{T}{{{T_0}}}} \right)}^{ - \frac{1}{3}}} - 1} \right)} \right)} \right)$$</p>
+<p>$$h = {h_r}\left( {{p_{sat}}/{p_r}} \right)/\left( {{p_a}/{p_r}} \right)$$</p>
+<p>$${p_{sat}}/{p_r} = {10^{ - 6.8346\left( {{T_{01}}/T} \right)}} + 4.615$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$a_{cl}$</td>
+<td>"classical" absorption caused by transport processes</td>
+<td>$\text{dB/m}$</td>
+</tr>
+<tr>
+<td>$a_{rot}$</td>
+<td>molecular absorption caused by rotational relaxation</td>
+<td>$\text{dB/m}$</td>
+</tr>
+<tr>
+<td>$a_{vib,O}$</td>
+<td>molecular absorption caused by vibrational relaxation of oxygen</td>
+<td>$\text{dB/m}$</td>
+</tr>
+<tr>
+<td>$a_{vib,N}$</td>
+<td>molecular absorption caused by vibrational relaxation of nitrogen</td>
+<td>$\text{dB/m}$</td>
+</tr>
+<tr>
+<td>$\left( {\alpha \lambda } \right)_{max}$</td>
+<td>maximum attenuation caused by vibrational relaxation</td>
+<td>$\text{dB}$</td>
+</tr>
+<tr>
+<td>$c$</td>
+<td>speef of sound</td>
+<td>$\text{m/s}$</td>
+</tr>
+<tr>
+<td>$f_{rO}$</td>
+<td>relaxation frequency of oxygen</td>
+<td>$\text{Hz}$</td>
+</tr>
+<tr>
+<td>$f_{rN}$</td>
+<td>relaxation frequency of nitrogen</td>
+<td>$\text{Hz}$</td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>molar concentration of water vapour</td>
+<td>$\text{\%}$</td>
+</tr>
+<tr>
+<td>$p_{sat}$</td>
+<td>saturation vapour pressure</td>
+<td>$\text{kPa}$</td>
+</tr>
+<tr>
+<td>$p_{a}$</td>
+<td>atmospheric pressure</td>
+<td>$\text{kPa}$</td>
+</tr>
+<tr>
+<td>$p_{r}$</td>
+<td>reference ambient atmospheric pressure</td>
+<td>$\text{kPa}$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Value</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\Theta_{O}$</td>
+<td>characteristic vibrational temperature for oxygen</td>
+<td>$2239.1$</td>
+<td>$\text{K}$</td>
+</tr>
+<tr>
+<td>$\Theta_{N}$</td>
+<td>characteristic vibrational temperature for nitrogen</td>
+<td>$3352.0$</td>
+<td>$\text{K}$</td>
+</tr>
+<tr>
+<td>$X_{O}$</td>
+<td>fractional molar concentration for oxygen</td>
+<td>$0.209$</td>
+<td></td>
+</tr>
+<tr>
+<td>$X_{N}$</td>
+<td>fractional molar concentration for nitrogen</td>
+<td>$0.781$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
-<pre><code>function alpha = sound_absorption_air_iso(T,RH,P,f)
-% Arguments
-%   T: temperature \ degree Celsius
-%   RH: relative humidity \ percentage
+<pre><code>function alpha = sound_absorption_air_iso_annex(T,RH,P,f)
+% Inputs
+%   T: temperature \ degree Celsius \ -20 &lt; T &lt; +50
+%   RH: relative humidity \ percentage \ 10 &lt; RH &lt; 100
 %   P: pressure \ kPa
-%   f: frequency \ kHz
-% Results
-%   alpha: absorption of sound in air \
+%   f: frequency \ kHz \ 0.05 &lt; f &lt; 10
+% Outputs
+%   alpha: absorption of sound in air \ dB/m
 
     Kelvin = 273.15;
     T_ref = Kelvin + 20;
     T_kel = Kelvin + T;
     T_rel = T_kel / T_ref;
     T_01 = Kelvin + 0.01;
+    Tho = 2239.1;
+    Thn = 3352.0;
     P_ref = 101.325;
-    P_rel = P / P_ref;
+    P_rel = P / P_ref;    
+    Xo = 0.209;
+    Xn = 0.781;
 
-    P_sat_over_P_ref = 10.^(-6.8346*(T_01./T_kel).^(1.261) + 4.6151);
-    H = RH.*(P_sat_over_P_ref./P_rel);
+    P_sat_P_ref = 10.^(-6.8346*(T_01./T_kel).^(1.261)+4.6151);
+    H = RH.*(P_sat_P_ref./P_rel);
 
-    Fro = P_rel.*(24 + 40400*H.*(0.02 + H)./(0.391 + H));
-    Frn = P_rel./sqrt(T_rel).*(9 + 280*H*exp(-4.17*(T_rel.^(-1/3) - 1)));
-    Xc = 1.8400e-11 ./ P_rel * sqrt(T_rel);
-    Xo = 0.01275 * exp(-2239.1./T_kel)./(Fro + ((f.^2) / Fro));
-    Xn = 0.1068 * exp(-3352./T_kel)./(Frn + ((f.^2)./Frn));
+    Fro = P_rel.*(24+(4.04e4)*H.*(0.02+H)./(0.391+H));
+    Frn = P_rel.*(T_rel.^(-1/3)).*(9+280*H*exp(-4.170*(T_rel.^(-1/3)-1)));
 
-    alpha = 20*log10(exp(1)).*(f.^2).*(Xc + (T_rel.^(-5/2)).*(Xo + Xn));
+    C = 343.2*(T_rel.^(1/2));
+    acr = (1.60e-10)*(T_rel.^(1/2)).*(f.^2)./P_rel;
+
+    amaxO = (2*pi/35)*(10*log10(exp(1)^2)) ...
+        *Xo*((Tho./T_kel).^2).*exp(-Tho./T_kel);
+    avibO = amaxO.*(f/C)*2.*(f./Fro)./(1+(f./Fro).^2);
+
+    amaxN = (2*pi/35)*(10*log10(exp(1)^2)) ...
+        *Xn*((Thn./T_kel).^2).*exp(-Thn./T_kel);
+    avibN = amaxN.*(f/C)*2.*(f./Frn)./(1+(f./Frn).^2);
+
+    alpha = acr + avibO + avibN;
 end
 </code></pre>
 <h2 id="computational-examples">Computational examples</h2>
-<p>$mmd_ERROR: Bad eval result sound_absorption_air_iso_ex_1</p>
+<p><img alt="" src="../img/sound_absorption_air_iso.en-1.png" /></p>
 <h2 id="references">References</h2>
+<ol>
+<li>ISO 9613-1 : Acoustics-Attenuation of sound during propagation outdoors-Part 1: Calculation of the absorption of sound by the atmosphere, (1993).</li>
+</ol>
               
             </div>
           </div><footer>
@@ -173,7 +360,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.770933+00:00
+    Build Date UTC : 2023-01-07 20:44:21.086412+00:00
      -->
   </div>
 </footer>

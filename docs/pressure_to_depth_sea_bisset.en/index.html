@@ -149,43 +149,43 @@ href="./">Bisset-Berman pressure to depth equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$Z$</td>
 <td>Depth</td>
-<td>$m$</td>
+<td>$\text{m}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$P$</td>
 <td>Pressure</td>
-<td>$kPa$</td>
-<td>$\times {\left( {9.80665 \times {{10}^1}} \right)^{ - 1}}$</td>
+<td>$\text{kPa}$</td>
 <td></td>
+<td>$ = P \times 0.0102$ $\text{kgf/cm}^2$</td>
 </tr>
 <tr>
 <td>$\phi$</td>
 <td>Latitude</td>
-<td>$deg$</td>
+<td>$\text{deg.}$</td>
+<td>$-90\ &lt; \phi &lt; 90$</td>
 <td></td>
-<td>$-90\ \le \phi \le 90$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function D = pressure_to_depth_sea_bisset(P,L)
-% Arguments
+% Inputs
 %   P: pressure \ kPa
 %   L: latitude \ degree \ -90 &lt; L &lt; 90
-% Results
+% Outputs
 %   D: depth \ m
 
-    P = P./9.80665e1;
+    P = P.*0.0102;
     D = 9.7512*P./(1+(5.3e-3)*sind(L).^2) - (2.07e-4)*P.^2;
 end
 </code></pre>
@@ -205,7 +205,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.769542+00:00
+    Build Date UTC : 2023-01-07 20:44:21.084475+00:00
      -->
   </div>
 </footer>

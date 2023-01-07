@@ -108,6 +108,9 @@ href="./">Leroy '97 pressure to depth equation</a>
         href="#mathematical-definition">Mathematical definition</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" 
+        href="#corrective-terms-for-various-areas">Corrective terms for various areas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" 
         href="#octavematlab-implementation">Octave/Matlab implementation</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" 
@@ -143,48 +146,158 @@ href="../pressure_to_depth_sea_bisset.en/">Bisset-Berman pressure to depth equat
 <h2 id="mathematical-definition">Mathematical definition</h2>
 <p>$$\boxed{Z\left( {P,\phi } \right) = \frac{{9.72659 \times {{10}^2}P - 2.512 \times {{10}^{ - 1}}{P^2} + 2.279 \times {{10}^{ - 4}}{P^3} - 1.82 \times {{10}^{ - 7}}{P^4}}}{{g\left( \phi  \right) + 1.092 \times {{10}^{ - 4}}P}}}$$</p>
 
+<p>This is an equation for the "standard" ocean. Use corrective terms from the table above for particular applications.</p>
 <table>
 <thead>
 <tr>
 <th>Notation</th>
 <th>Definition</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$Z$</td>
-<td>Depth</td>
-<td>$m$</td>
+<td>depth</td>
+<td>$\text{m}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$P$</td>
-<td>Pressure</td>
-<td>$kPa$</td>
-<td>$\times {10^{ - 3}}$</td>
-<td>$0\ &lt; P\ &lt; 1000$</td>
+<td>pressure</td>
+<td>$\text{kPa}$</td>
+<td>$0\ &lt; P &lt; 1000$</td>
+<td>$=P\times {10^{-3}}$ $\text{MPa}$</td>
 </tr>
 <tr>
 <td>$\phi$</td>
-<td>Latitude</td>
-<td>$deg$</td>
-<td></td>
+<td>latitude</td>
+<td>$\text{deg.}$</td>
 <td>$-90\ &lt; \phi &lt; 90$</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <p>$$g\left( \phi  \right) = 9.780318\left( {1 + 5.2788 \times {{10}^{ - 3}}{{\sin }^2}\left( \phi  \right) - 2.36 \times {{10}^{ - 5}}{{\sin }^4}\left( \phi  \right)} \right)$$</p>
 
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$g\left( \phi  \right)$</td>
+<td>gravity</td>
+<td>$\text{ms}^{-2}$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="corrective-terms-for-various-areas">Corrective terms for various areas</h2>
+<p>$${Z_{corrected}} = Z\left( {P,\phi } \right) + \Delta Z\left( P \right)$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Area of applicability</th>
+<th>Latitude</th>
+<th>Expression for $\Delta Z\left( P \right)$, $\text{m}$</th>
+<th>Accuracy $\pm \text{m}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common oceans</td>
+<td>$60^\circ N - 40^\circ S$</td>
+<td>$P/\left( {P + 1} \right) + 5.7 \times {10^{ - 2}}P$</td>
+<td>$0.8$</td>
+</tr>
+<tr>
+<td>North Eastern Atlantic</td>
+<td>$30^\circ N - 35^\circ S$</td>
+<td>$P/\left( {P + 2} \right) + 3 \times {10^{ - 2}}P$</td>
+<td>$0.3$</td>
+</tr>
+<tr>
+<td>Circumpolar Antarctic</td>
+<td></td>
+<td>$4 \times {10^{ - 2}}P - 2 \times {10^{ - 4}}{P^2}$</td>
+<td>$0.1$</td>
+</tr>
+<tr>
+<td>Mediterranean Sea</td>
+<td></td>
+<td>$- 7 \times {10^{ - 2}}P + 2 \times {10^{ - 3}}{P^2}$</td>
+<td>$0.2$</td>
+</tr>
+<tr>
+<td>Red Sea</td>
+<td></td>
+<td>$0$</td>
+<td>$0.2$</td>
+</tr>
+<tr>
+<td>Arctic ocean</td>
+<td></td>
+<td>$0$</td>
+<td>$0.1$</td>
+</tr>
+<tr>
+<td>Sea of Japan</td>
+<td></td>
+<td>$6 \times {10^{ - 2}}P$</td>
+<td>$0.1$</td>
+</tr>
+<tr>
+<td>Sulu Sea</td>
+<td>$8^\circ$</td>
+<td>$0.9P/\left( {P + 1} \right) + 0.17P + 7 \times {10^{ - 4}}{P^2}$</td>
+<td>$0.2$</td>
+</tr>
+<tr>
+<td>Halmahera basin</td>
+<td>$0^\circ$</td>
+<td>$0.8P/\left( {P + 0.5} \right) + 0.125P$</td>
+<td>$0.1$</td>
+</tr>
+<tr>
+<td>Celebes basin</td>
+<td>$4^\circ$</td>
+<td>$1.2P/\left( {P + 1} \right) + 6.7 \times {10^{ - 2}}P + 2.2 \times {10^{ - 4}}{P^2}$</td>
+<td>$0.4$</td>
+</tr>
+<tr>
+<td>Weber deep</td>
+<td>$6^\circ$</td>
+<td>$1.2P/\left( {P + 1} \right) + 6.7 \times {10^{ - 2}}P + 2.2 \times {10^{ - 4}}{P^2}$</td>
+<td>$0.4$</td>
+</tr>
+<tr>
+<td>Black Sea</td>
+<td>$43^\circ$</td>
+<td>$1.1P$</td>
+<td>$0.1$</td>
+</tr>
+<tr>
+<td>Baltic Sea</td>
+<td>$60^\circ$</td>
+<td>$1.8P$</td>
+<td>$0.1$</td>
+</tr>
+</tbody>
+</table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function D = pressure_to_depth_sea_leroy_97(P,L)
-% Arguments
+% Inputs
 %   P: pressure \ kPa
 %   L: latitude \ degree \ -90 &lt; L &lt; 90
-% Results
+% Outputs
 %   D: depth \ m
 
     P = P*1e-3;
@@ -208,7 +321,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.770231+00:00
+    Build Date UTC : 2023-01-07 20:44:21.085158+00:00
      -->
   </div>
 </footer>

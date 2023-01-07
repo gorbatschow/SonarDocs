@@ -149,56 +149,49 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
-<th>Limits for $f &lt; 500 \; kHz$</th>
-<th>Limits for $f &gt; 500 \; kHz$</th>
+<th>Limits for $f &lt; 500 \; \text{kHz}$</th>
+<th>Limits for $f &gt; 500 \; \text{kHz}$</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$\alpha$</td>
 <td>absorption</td>
-<td>$dB/km$</td>
-<td></td>
+<td>$\text{dB/km}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$-2 &lt; T &lt; 22$</td>
 <td>$0 &lt; T &lt; 30$</td>
 </tr>
 <tr>
 <td>$S$</td>
 <td>salinity</td>
-<td>$‰$</td>
-<td></td>
+<td>$\text{‰}$</td>
 <td>$30 &lt; S &lt; 35$</td>
 <td>$0 &lt; S &lt; 40$</td>
 </tr>
 <tr>
 <td>$D$</td>
 <td>depth</td>
-<td>$m$</td>
-<td></td>
+<td>$\text{m}$</td>
 <td>$0 &lt; D &lt; 3500$</td>
 <td>$0 &lt; D &lt; 10000$</td>
 </tr>
 <tr>
 <td>$f$</td>
 <td>frequency</td>
-<td>$kHz$</td>
-<td></td>
+<td>$\text{kHz}$</td>
 <td>$10^{ - 2} &lt;  f$</td>
 <td>$f &lt; {10^3}$</td>
 </tr>
 <tr>
 <td>$pH$</td>
 <td>acidity</td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -229,66 +222,50 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
-<th>Limits</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$T_{K}$</td>
-<td>temperature</td>
-<td>$K$</td>
-<td>$=273.15+T$</td>
-<td></td>
+<td>$=T + 273$, temperature in Kelvin</td>
+<td>$\text{K}$</td>
 </tr>
 <tr>
 <td>$f_{1}$</td>
 <td>boric acid relaxation frequency</td>
-<td>$kHz$</td>
-<td></td>
-<td></td>
+<td>$\text{kHz}$</td>
 </tr>
 <tr>
 <td>$f_{2}$</td>
 <td>magnesium sulfate relaxation frequency</td>
-<td>$kHz$</td>
-<td></td>
-<td></td>
+<td>$\text{kHz}$</td>
 </tr>
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
-<td></td>
-<td></td>
+<td>$\text{m/s}$</td>
 </tr>
 <tr>
 <td>$\frac{{{A_1}{P_1}{f_1}{f^2}}}{{{f_1}^2 + {f^2}}}$</td>
 <td>boric acid contribution</td>
-<td>$dB/km$</td>
-<td></td>
-<td></td>
+<td>$\text{dB/km}$</td>
 </tr>
 <tr>
 <td>$\frac{{{A_2}{P_2}{f_2}{f^2}}}{{{f_2}^2 + {f^2}}}$</td>
 <td>magnesium sulfate contribution</td>
-<td>$dB/km$</td>
-<td></td>
-<td></td>
+<td>$\text{dB/km}$</td>
 </tr>
 <tr>
 <td>${A_3}{P_3}{f^2}$</td>
 <td>pure water contribution</td>
-<td>$dB/km$</td>
-<td></td>
-<td></td>
+<td>$\text{dB/km}$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function [alpha, Boric, MgSO4, H2O, C] = sound_absorption_sea_francois ...
     (T,S,D,f,pH)
-% Arguments
+% Inputs
 %   T: temperature \ degree Celsius \ 
 %      -2 &lt; T &lt; 22 for 10 Hz &lt; f &lt; 500 kHz
 %      0 &lt; T &lt; 30 for f &gt; 500 kHz
@@ -300,7 +277,7 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 %       0 &lt; D &lt; 10000 for f &gt; 500 kHz
 %   f: frequency \ kHz
 %   pH: &quot;potential of hydrogen&quot;
-% Results
+% Outputs
 %   alpha: absorption of sound in seawater \ dB/km
 
     T_kel = 273 + T;
@@ -351,7 +328,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.773593+00:00
+    Build Date UTC : 2023-01-07 20:44:21.089738+00:00
      -->
   </div>
 </footer>

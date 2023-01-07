@@ -156,7 +156,6 @@ C\left( {T,S,D} \right) = 1448.96 + 4.591T - 5.304 \times {10^{ - 2}}{T^2} + 2.3
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
 </tr>
 </thead>
@@ -164,40 +163,36 @@ C\left( {T,S,D} \right) = 1448.96 + 4.591T - 5.304 \times {10^{ - 2}}{T^2} + 2.3
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
-<td></td>
+<td>$\text{m/s}$</td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$-2 &lt; T &lt; 30$</td>
 </tr>
 <tr>
 <td>$S$</td>
 <td>salinity</td>
-<td>$‰$</td>
-<td></td>
+<td>$\text{‰}$</td>
 <td>$25 &lt; S &lt; 40$</td>
 </tr>
 <tr>
 <td>$D$</td>
 <td>depth</td>
-<td>$m$</td>
-<td></td>
+<td>$\text{m}$</td>
 <td>$0 &lt; D &lt; 8000$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_sea_mackenzie(T,S,D)
-% Arguments
+% Inputs
 %   T: temperature \ degree Celsius \ -2 &lt; T &lt; 30 
 %   S: salinity \ ppt \ 25 &lt; S &lt; 40
 %   D: depth \ m \ 0 &lt; D &lt; 8000
-% Results
+% Outputs
 %   C: speed of sound in seawater \ m/s
 
     C = 1448.96 + 4.591*T - (5.304e-2)*(T.^2) + (2.374e-4)*(T.^3) ...
@@ -220,7 +215,7 @@ end
 </thead>
 <tbody>
 <tr>
-<td>$10\ m$</td>
+<td>$10\ \text{m}$</td>
 <td>$1442.42$</td>
 <td>$1483.78$</td>
 <td>$1515.95$</td>
@@ -228,7 +223,7 @@ end
 <td>$1558.44$</td>
 </tr>
 <tr>
-<td>$1000\ m$</td>
+<td>$1000\ \text{m}$</td>
 <td>$1458.73$</td>
 <td>$1500.08$</td>
 <td>$1532.24$</td>
@@ -236,7 +231,7 @@ end
 <td>$1574.72$</td>
 </tr>
 <tr>
-<td>$2000\ m$</td>
+<td>$2000\ \text{m}$</td>
 <td>$1475.53$</td>
 <td>$1516.83$</td>
 <td>$1548.94$</td>
@@ -244,7 +239,7 @@ end
 <td>$1591.32$</td>
 </tr>
 <tr>
-<td>$5000\ m$</td>
+<td>$5000\ \text{m}$</td>
 <td>$1527.95$</td>
 <td>$1568.41$</td>
 <td>$1599.69$</td>
@@ -266,7 +261,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.779607+00:00
+    Build Date UTC : 2023-01-07 20:44:21.095337+00:00
      -->
   </div>
 </footer>

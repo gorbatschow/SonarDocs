@@ -158,7 +158,6 @@ href="../sound_speed_water_belogolskii.en/">Belogolskii & Sekoyan equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
 </tr>
 </thead>
@@ -166,15 +165,13 @@ href="../sound_speed_water_belogolskii.en/">Belogolskii & Sekoyan equation</a>
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
-<td></td>
+<td>$\text{m/s}$</td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$0 &lt; T &lt; 100$</td>
 </tr>
 </tbody>
@@ -215,9 +212,9 @@ href="../sound_speed_water_belogolskii.en/">Belogolskii & Sekoyan equation</a>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_water_bilaniuk_148(T)
-% Arguments
+% Inputs
 %    T: temperature \ degree Celsius \ 0 &lt; T &lt; 100
-% Results
+% Outputs
 %    C: speed of sound in pure water \ m/s
 
     k0 = +1.40238744e+3;
@@ -247,7 +244,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.785300+00:00
+    Build Date UTC : 2023-01-07 20:44:21.100907+00:00
      -->
   </div>
 </footer>

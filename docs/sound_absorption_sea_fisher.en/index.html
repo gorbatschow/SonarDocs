@@ -149,7 +149,6 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Converion</th>
 <th>Limits</th>
 </tr>
 </thead>
@@ -157,29 +156,25 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 <tr>
 <td>$\alpha$</td>
 <td>absorption</td>
-<td>$dB/km$</td>
-<td></td>
+<td>$\text{dB/km}$</td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td></td>
 </tr>
 <tr>
 <td>$D$</td>
 <td>depth</td>
-<td>$m$</td>
-<td></td>
+<td>$\text{m}$</td>
 <td></td>
 </tr>
 <tr>
 <td>$f$</td>
 <td>frequency</td>
-<td>$kHz$</td>
-<td></td>
+<td>$\text{kHz}$</td>
 <td></td>
 </tr>
 </tbody>
@@ -199,62 +194,48 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
-<th>Limits</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$T_{K}$</td>
-<td>temperature</td>
-<td>$K$</td>
-<td>$=273.15+T$</td>
-<td></td>
+<td>$=T + 273.1$, temperature in Kelvin</td>
+<td>$\text{K}$</td>
 </tr>
 <tr>
 <td>$f_{1}$</td>
 <td>boric acid relaxation frequency</td>
-<td>$kHz$</td>
-<td></td>
-<td></td>
+<td>$\text{kHz}$</td>
 </tr>
 <tr>
 <td>$f_{2}$</td>
 <td>magnesium sulphate relaxation frequency</td>
-<td>$kHz$</td>
-<td></td>
-<td></td>
+<td>$\text{kHz}$</td>
 </tr>
 <tr>
 <td>$\frac{{{A_1}{P_1}{f_1}{f^2}}}{{{f_1}^2 + {f^2}}}$</td>
 <td>boric acid contribution</td>
-<td>$dB/km$</td>
-<td></td>
-<td></td>
+<td>$\text{dB/km}$</td>
 </tr>
 <tr>
 <td>$\frac{{{A_2}{P_2}{f_2}{f^2}}}{{{f_2}^2 + {f^2}}}$</td>
 <td>magnesium sulphate contribution</td>
-<td>$dB/km$</td>
-<td></td>
-<td></td>
+<td>$\text{dB/km}$</td>
 </tr>
 <tr>
 <td>${A_3}{P_3}{f^2}$</td>
 <td>pure water contribution</td>
-<td>$dB/km$</td>
-<td></td>
-<td></td>
+<td>$\text{dB/km}$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function [alpha, Boric, MgSO4, H2O] = sound_absorption_sea_fisher(T,D,f)
-% Arguments
+% Inputs
 %   T: temperature \ degree Celsius
 %   D: depth \ m
 %   f: frequency \ kHz \ 10 &lt; f &lt; 400
-% Results
+% Outputs
 %   alpha: absorption of sound in seawater \ dB/km
 
     T_kel = 273.1 + T;
@@ -301,7 +282,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.772514+00:00
+    Build Date UTC : 2023-01-07 20:44:21.088785+00:00
      -->
   </div>
 </footer>

@@ -147,38 +147,38 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
+<td>$\text{m/s}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$0 &lt; T &lt; 30$</td>
+<td></td>
 </tr>
 <tr>
 <td>$P$</td>
 <td>pressure</td>
-<td>$kPa$</td>
-<td>$\times 10^{3}$</td>
+<td>$\text{kPa}$</td>
 <td>$75 &lt; P &lt; 102$</td>
+<td>$= P \times 10^{3}$ $\text{Pa}$</td>
 </tr>
 <tr>
 <td>$X_{w}$</td>
 <td>water vapor mole fraction</td>
 <td></td>
-<td></td>
 <td>$X_{w} &lt; 0.06$</td>
+<td></td>
 </tr>
 <tr>
 <td>$X_{c}$</td>
@@ -186,6 +186,43 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <td></td>
 <td></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<p>$${p_{sv}} = 1{\rm{Pa}} \times \exp \left( {A{T_K}^2 + B{T_K} + C + \frac{D}{{{T_K}}}} \right)$$</p>
+
+<p>$$f = \alpha  + \beta P + \gamma {T^2}$$</p>
+
+<p>$${x_v} = hf\left( {P,T} \right)\frac{{{p_{sv}}\left( T \right)}}{P}$$</p>
+
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$p_{sv}$</td>
+<td>saturation vapour pressure of moist air</td>
+<td>$\text{Pa}$</td>
+</tr>
+<tr>
+<td>$f$</td>
+<td>enhancement factor</td>
+<td></td>
+</tr>
+<tr>
+<td>$x_{v}$</td>
+<td>the mole fraction of water vapour</td>
+<td></td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>relative humidity</td>
+<td>$\text{\%}$</td>
 </tr>
 </tbody>
 </table>
@@ -249,12 +286,6 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 </tr>
 </tbody>
 </table>
-<p>$${p_{sv}} = 1{\rm{Pa}} \times \exp \left( {A{T_K}^2 + B{T_K} + C + \frac{D}{{{T_K}}}} \right)$$</p>
-
-<p>$$f = \alpha  + \beta P + \gamma {T^2}$$</p>
-
-<p>$${x_v} = hf\left( {P,T} \right)\frac{{{p_{sv}}\left( T \right)}}{P}$$</p>
-
 <table>
 <thead>
 <tr>
@@ -267,12 +298,12 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <tr>
 <td>$A$</td>
 <td>$+1.2378847 \times 10^{-5}$</td>
-<td>$K^{-2}$</td>
+<td>$\text{K}^{-2}$</td>
 </tr>
 <tr>
 <td>$B$</td>
 <td>$-1.9121316 \times 10^{-2}$</td>
-<td>$K^{-1}$</td>
+<td>$\text{K}^{-1}$</td>
 </tr>
 <tr>
 <td>$C$</td>
@@ -282,19 +313,8 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <tr>
 <td>$D$</td>
 <td>$-6.3431645 \times 10^{3}$</td>
-<td>$K$</td>
+<td>$\text{K}$</td>
 </tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Coefficient</th>
-<th>Value</th>
-<th>Units</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>$\alpha$</td>
 <td>$+1.00062$</td>
@@ -303,63 +323,22 @@ href="../sound_absorption_air_iso.en/">ISO 9613-1 sound absorption equation</a>
 <tr>
 <td>$\beta$</td>
 <td>$+3.14 \times 10^{-8}$</td>
-<td>$Pa^{-1}$</td>
+<td>$\text{Pa}^{-1}$</td>
 </tr>
 <tr>
 <td>$\gamma$</td>
 <td>$+5.6 \times 10^{-7}$</td>
-<td>$K^{-2}$</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Notation</th>
-<th>Description</th>
-<th>Units</th>
-<th>Conversion</th>
-<th>Limits</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$p_{sv}$</td>
-<td>saturation vapour pressure of moist air</td>
-<td>$Pa$</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>$f$</td>
-<td>enhancement factor</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>$x_{v}$</td>
-<td>the mole fraction of water vapour</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>$h$</td>
-<td>relative humidity</td>
-<td></td>
-<td></td>
-<td></td>
+<td>$\text{K}^{-2}$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_air_cramer(T,RH,P)
-% Arguments
+% Inputs
 %    T: temperature \ degree Celsius \ 0 &lt; T &lt; 30
 %   RH: relative humidity \ percentage
 %    P: pressure \ kPa \ 75 &lt; P &lt; 102
-% Results
+% Outputs
 %    C: speed of sound in air \ m/s
 
     T_kel = T + 273.15;
@@ -407,7 +386,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.775709+00:00
+    Build Date UTC : 2023-01-07 20:44:21.091577+00:00
      -->
   </div>
 </footer>

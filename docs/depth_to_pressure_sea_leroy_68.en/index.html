@@ -149,40 +149,40 @@ href="../pressure_to_depth_sea_bisset.en/">Bisset-Berman pressure to depth equat
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$P$</td>
-<td>Pressure</td>
-<td>$kPa$</td>
-<td>$\times 9.80665 \times {10^1}$</td>
+<td>pressure</td>
+<td>$\text{kPa}$</td>
 <td></td>
+<td>$=P \left[ \text{kgf/cm}^{2} \right] \times 9.80665 \times 10^{1}$</td>
 </tr>
 <tr>
 <td>$Z$</td>
-<td>Depth</td>
-<td>$m$</td>
+<td>depth</td>
+<td>$\text{m}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$\phi$</td>
-<td>Latitude</td>
-<td>$deg.$</td>
+<td>latitude</td>
+<td>$\text{deg.}$</td>
+<td>$-90\ &lt; \phi &lt; 90$</td>
 <td></td>
-<td>$-90\ \le \phi \le 90$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function P = depth_to_pressure_sea_leroy_68(D,L)
-% Arguments
+% Inputs
 %   D: depth \ m
 %   L: latitude \ degree \ -90 &lt; L &lt; 90
-% Results
+% Outputs
 %   P: pressure \ kPa
 
     P = 0.102506*(1+(5.28e-3)*sind(L).^2).*D+(2.54e-7)*(D.^2);
@@ -204,7 +204,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.762626+00:00
+    Build Date UTC : 2023-01-07 20:44:21.076956+00:00
      -->
   </div>
 </footer>

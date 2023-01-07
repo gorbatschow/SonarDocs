@@ -161,31 +161,31 @@ C\left( {T,P} \right) = C\left( {T,0} \right) + {M_1}\left( T \right)\left( {P -
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
+<td>$\text{m/s}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$0 &lt; T &lt; 40$</td>
+<td></td>
 </tr>
 <tr>
 <td>$P$</td>
 <td>pressure</td>
-<td>$kPa$</td>
-<td>$\times 10^{-3}$</td>
+<td>$\text{kPa}$</td>
 <td>$100 &lt; P &lt; 60000$</td>
+<td>$=P\times 10^{-3}$ $\text{MPa}$</td>
 </tr>
 </tbody>
 </table>
@@ -268,10 +268,10 @@ C\left( {T,P} \right) = C\left( {T,0} \right) + {M_1}\left( T \right)\left( {P -
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_water_belogolskii(T, P)
-% Arguments
+% Inputs
 %    T: temperature \ degree Celsius \ 0 &lt; T &lt; 40
 %    P: pressure \ kPa \ 100 &lt; P &lt; 60000
-% Results
+% Outputs
 %    C: speed of sound in pure water \ m/s
 
     P = P*1e-3;
@@ -318,7 +318,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.783355+00:00
+    Build Date UTC : 2023-01-07 20:44:21.098978+00:00
      -->
   </div>
 </footer>

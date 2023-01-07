@@ -141,7 +141,7 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
               
                   <h1 id="sound-absorption-in-sea-thorp-equation">Sound absorption in sea. Thorp equation</h1>
 <h2 id="mathematical-definition">Mathematical definition</h2>
-<p>$$\boxed{\alpha \left( f \right)  = {\frac{{0.1{f^2}}}{{1 + {f^2}}} + \frac{{40{f^2}}}{{4100 + {f^2}}}}}$$</p>
+<p>$$\boxed{\alpha \left( f \right) = \frac{{0.1{f^2}}}{{1 + {f^2}}} + \frac{{40{f^2}}}{{4100 + {f^2}}}}$$</p>
 
 <table>
 <thead>
@@ -149,32 +149,32 @@ href="../sound_absorption_sea_ainslie.en/">Ainslie & McColm equation</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$\alpha$</td>
 <td>absorption</td>
-<td>$dB/km$</td>
-<td>$\times 1.0936$</td>
+<td>$\text{dB/km}$</td>
 <td></td>
+<td>$= \alpha \left[ \text{dB/kyd} \right] \times 1.0936$</td>
 </tr>
 <tr>
 <td>$f$</td>
 <td>frequency</td>
-<td>$kHz$</td>
-<td></td>
+<td>$\text{kHz}$</td>
 <td>$f &lt; 50$</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function alpha = sound_absorption_sea_thorp(f)
-% Arguments
+% Inputs
 %   f: frequency \ kHz
-% Results
+% Outputs
 %   alpha: absorption of sound in seawater \ dB/km
 
     alpha = 1.0936*(0.1*(f.^2)./(1+f.^2) ...
@@ -183,26 +183,6 @@ end
 </code></pre>
 <h2 id="computational-examples">Computational examples</h2>
 <p><img alt="" src="../img/sound_absorption_sea_thorp.en-1.png" /></p>
-<table>
-<thead>
-<tr>
-<th>$0.01\ \text{кГц}$</th>
-<th>$0.10\ \text{кГц}$</th>
-<th>$1.00\ \text{кГц}$</th>
-<th>$10.00\ \text{кГц}$</th>
-<th>$100.00\ \text{кГц}$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$1.200E-05$</td>
-<td>$1.189E-03$</td>
-<td>$6.535E-02$</td>
-<td>$1.150E+00$</td>
-<td>$3.113E+01$</td>
-</tr>
-</tbody>
-</table>
 <h2 id="references">References</h2>
 <ol>
 <li>Thorp, William H, "Analytic description of the low‐frequency attenuation coefficient", 1967</li>
@@ -217,7 +197,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.774962+00:00
+    Build Date UTC : 2023-01-07 20:44:21.090944+00:00
      -->
   </div>
 </footer>

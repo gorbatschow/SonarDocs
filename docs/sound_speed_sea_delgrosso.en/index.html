@@ -152,38 +152,38 @@ href="../sound_speed_sea_npl.en/">Leroy et al. equation (NPL)</a>
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
+<th>Conversion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
+<td>$\text{m/s}$</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$0 &lt; T &lt; 35$</td>
+<td></td>
 </tr>
 <tr>
 <td>$S$</td>
 <td>salinity</td>
-<td>$‰$</td>
-<td></td>
+<td>$\text{‰}$</td>
 <td>$29 &lt; S &lt; 43$</td>
+<td></td>
 </tr>
 <tr>
 <td>$P$</td>
 <td>pressure</td>
-<td>$kPa$</td>
-<td>$\times 1.019716 \times 10^{-2}$</td>
+<td>$\text{kPa}$</td>
 <td>$0 &lt; P &lt; 98000$</td>
+<td>$= P \times 1.019716 \times 10^{-2}$ $\text{at}$</td>
 </tr>
 </tbody>
 </table>
@@ -270,11 +270,11 @@ href="../sound_speed_sea_npl.en/">Leroy et al. equation (NPL)</a>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_sea_delgrosso(T,S,P)
-% Arguments
+% Inputs
 %   T: temperature \ degree Celsius \ 0 &lt; T &lt; 35 
 %   S: salinity \ ppt \ 29 &lt; S &lt; 43
 %   P: pressure \ kPa \ 0 &lt; P &lt; 98000 
-% Results
+% Outputs
 %   C: speed of sound in seawater \ m/s
 
     C000 = 1402.392;
@@ -297,7 +297,7 @@ href="../sound_speed_sea_npl.en/">Leroy et al. equation (NPL)</a>
     CS2TP = 0.4857614e-5;
     CSTP =-0.3406824e-3;
 
-    p = (P./100)*1.019716;
+    p = P*1.019716e-2;
 
     CT = CT1*T + CT2*(T.^2) + CT3*(T.^3);
     CS = CS1*S + CS2*(S.^2);
@@ -325,7 +325,7 @@ end
 </thead>
 <tbody>
 <tr>
-<td>$10\ m$</td>
+<td>$10\ \text{m}$</td>
 <td>$1442.55$</td>
 <td>$1483.85$</td>
 <td>$1516.04$</td>
@@ -333,7 +333,7 @@ end
 <td>$1558.37$</td>
 </tr>
 <tr>
-<td>$1000\ m$</td>
+<td>$1000\ \text{m}$</td>
 <td>$1458.67$</td>
 <td>$1500.30$</td>
 <td>$1532.61$</td>
@@ -341,7 +341,7 @@ end
 <td>$1573.49$</td>
 </tr>
 <tr>
-<td>$2000\ m$</td>
+<td>$2000\ \text{m}$</td>
 <td>$1475.45$</td>
 <td>$1517.18$</td>
 <td>$1549.48$</td>
@@ -349,7 +349,7 @@ end
 <td>$1588.94$</td>
 </tr>
 <tr>
-<td>$5000\ m$</td>
+<td>$5000\ \text{m}$</td>
 <td>$1528.32$</td>
 <td>$1569.16$</td>
 <td>$1600.96$</td>
@@ -372,7 +372,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.778185+00:00
+    Build Date UTC : 2023-01-07 20:44:21.093946+00:00
      -->
   </div>
 </footer>

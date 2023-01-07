@@ -158,7 +158,6 @@ C\left( {T,S,D} \right) = 1402.5 + 5T - 5.44 \times {10^{ - 2}}{T^2} + 2.1 \time
 <th>Notation</th>
 <th>Description</th>
 <th>Units</th>
-<th>Conversion</th>
 <th>Limits</th>
 </tr>
 </thead>
@@ -166,41 +165,37 @@ C\left( {T,S,D} \right) = 1402.5 + 5T - 5.44 \times {10^{ - 2}}{T^2} + 2.1 \time
 <tr>
 <td>$C$</td>
 <td>sound speed</td>
-<td>$m/s$</td>
-<td></td>
+<td>$\text{m/s}$</td>
 <td></td>
 </tr>
 <tr>
 <td>$T$</td>
 <td>temperature</td>
-<td>$^{\circ}C$</td>
-<td></td>
+<td>$^{\circ}\text{C}$</td>
 <td>$-1 &lt; T &lt; 30$</td>
 </tr>
 <tr>
 <td>$S$</td>
 <td>salinity</td>
-<td>$‰$</td>
-<td></td>
+<td>$\text{‰}$</td>
 <td>$0 &lt; S &lt; 42$</td>
 </tr>
 <tr>
 <td>$D$</td>
 <td>depth</td>
-<td>$m$</td>
-<td></td>
+<td>$\text{m}$</td>
 <td>$0 &lt; D &lt; 12000$</td>
 </tr>
 </tbody>
 </table>
 <h2 id="octavematlab-implementation">Octave/Matlab implementation</h2>
 <pre><code>function C = sound_speed_sea_npl(T,S,D,L)
-% Arguments
+% Inputs
 %   T: temperature \ degree Celsius \ -1 &lt; T &lt; 30 
 %   S: salinity \ ppt \ 0 &lt; S &lt; 42
 %   D: depth \ m \ 0 &lt; D &lt; 12000
 %   L: latitude \ degree \ -90 &lt; L &lt; 90
-% Results
+% Outputs
 %   C: speed of sound in seawater \ m/s
 
     C = 1402.5 + 5*T - (5.44e-2)*(T.^2) + (2.1e-4)*(T.^3) ...
@@ -225,7 +220,7 @@ end
 </thead>
 <tbody>
 <tr>
-<td>$10\ m$</td>
+<td>$10\ \text{m}$</td>
 <td>$1442.56$</td>
 <td>$1483.90$</td>
 <td>$1516.14$</td>
@@ -233,7 +228,7 @@ end
 <td>$1558.38$</td>
 </tr>
 <tr>
-<td>$1000\ m$</td>
+<td>$1000\ \text{m}$</td>
 <td>$1458.62$</td>
 <td>$1499.98$</td>
 <td>$1532.31$</td>
@@ -241,7 +236,7 @@ end
 <td>$1574.88$</td>
 </tr>
 <tr>
-<td>$2000\ m$</td>
+<td>$2000\ \text{m}$</td>
 <td>$1475.31$</td>
 <td>$1516.64$</td>
 <td>$1548.98$</td>
@@ -249,7 +244,7 @@ end
 <td>$1591.78$</td>
 </tr>
 <tr>
-<td>$5000\ m$</td>
+<td>$5000\ \text{m}$</td>
 <td>$1527.74$</td>
 <td>$1568.04$</td>
 <td>$1599.55$</td>
@@ -271,7 +266,7 @@ end
       <p>Made with MkDocs using ReadTheDocsTheme</p>
     <!-- Technical Info
     MkDocs version : 1.4.2
-    Build Date UTC : 2023-01-04 08:14:38.780594+00:00
+    Build Date UTC : 2023-01-07 20:44:21.096282+00:00
      -->
   </div>
 </footer>
